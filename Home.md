@@ -1,7 +1,5 @@
 Welcome to the MBox wiki, this is mainly an index for the guides.
 
-Documentation
-
 # Getting Started
 
 [Quick Start Demo](https://github.com/MBoxPlus/mbox/blob/main/doc/quick_start_demo_ios.md)
