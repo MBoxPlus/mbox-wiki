@@ -155,6 +155,38 @@ Show Status
 
 Remove the repo called `SnapKit` from the feature `test`. All the operations on the repo just have an effect on the current feature.
 
+### Git
+
+`mbox git` helps manage many git repositories by executing git command for each repository. `mbox git` is based on [libgit2](https://github.com/libgit2/libgit2) and not meant to replace git. You can still use git to manage the repository under the MBox workspace.
+
+```shell
+$ mbox git status
+[MBoxReposDemo]
+  On branch feature/test_git
+  nothing to commit, working tree clean
+[MBoxReposDemo2]
+  On branch feature/test_git
+  nothing to commit, working tree clean
+[SnapKit]
+  On branch feature/test_git
+  nothing to commit, working tree clean
+```
+
+`mbox merge` is another git related command, which only can be used in feature mode. This command helps you to make it easier to the merge target branch into the current feature branch.
+
+```shell
+$ mbox merge
+[MBoxReposDemo]
+  Merge branch `origin/main` into branch `feature/test_git`.
+  There is nothing to merge.
+[MBoxReposDemo2]
+  Merge branch `origin/main` into branch `feature/test_git`.
+  There is nothing to merge.
+[SnapKit]
+  Merge branch `origin/develop` into branch `feature/test_git`.
+  There is nothing to merge.
+```
+
 ## Manage Features
 
 ### List Features
