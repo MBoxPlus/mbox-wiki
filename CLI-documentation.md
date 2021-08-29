@@ -1,928 +1,1981 @@
-# Global
+## mbox activate
 
-### mbox init
-
-```shell
-$ mbox init [PLUGIN_GROUP [...]]
 ```
-
-Init Workspace
-
-### Options
-
-<table>
-  <tr>
-    <td>--plugin</td>
-    <td>Config the plugin. It could be used many times to config more plugins.</td>
-  </tr>
-  <tr>
-    <td>--name</td>
-    <td>To set the new MBox workspace (folder) name.</td>
-  </tr>
-</table>
-
-### mbox setup
-
-```shell
-$ mbox setup
-```
-
-Setup Command Line Tool
-
-### Options
-
-<table>
-  <tr>
-    <td>--bin-dir</td>
-    <td>Output the executable bin to specific directory. Default value: `/usr/local/bin`</td>
-  </tr>
-</table>
-
-# Workspace
-
-### mbox activate
-
-```shell
 $ mbox activate NAME
 ```
+Activate a or more components
 
-Activate a or more components.
-
-#### Arguments
-
+#### Arguments:
 <table>
   <tr>
-    <td>NAME</td>
-    <td>Repo/Component Name</td>
+    <td style="white-space: nowrap">
+      NAME
+    </td>
+    <td>
+      Repo/Component Name
+    </td>
   </tr>
 </table>
 
+#### Options:
+<table>
+  <tr>
+    <td style="white-space: nowrap">
+      --tool
+    </td>
+    <td>
+      Use the specified dependency management tool
+    </td>
+  </tr>
+</table>
 
-#### Example
+#### Flags:
+<table>
+  <tr>
+    <td style="white-space: nowrap">
+      --all
+    </td>
+    <td>
+      All Components
+    </td>
+  </tr>
+</table>
 
-```shell
+#### Example:
+```bash
+# Activate all components in the `repo1`
 $ mbox activate repo1
+
+# Activate the component named `component1` in the `repo1`
 $ mbox activate repo1/component1
 ```
 
-### mbox add
 
-```shell
+## mbox add
+
+```
 $ mbox add NAME [TARGET_BRANCH] [BASE_BRANCH]
 ```
-
 Add a repo into current feature
 
-#### Arguments
-
+#### Arguments:
 <table>
   <tr>
-    <td>NAME</td>
-    <td>Repo Name/URL/Path</td>
+    <td style="white-space: nowrap">
+      NAME
+    </td>
+    <td>
+      Repo Name/URL/Path
+    </td>
   </tr>
-   <tr>
-    <td>TARGET_BRANCH</td>
-    <td>[Optional] Merge to the target branch</td>
+  <tr>
+    <td style="white-space: nowrap">
+      TARGET_BRANCH
+    </td>
+    <td>
+      [Optional] Merge to the target branch
+    </td>
   </tr>
-   <tr>
-    <td>BASE_BRANCH</td>
-    <td>[Optional] Check from the base branch. Defaults same as TARGET_BRANCH</td>
+  <tr>
+    <td style="white-space: nowrap">
+      BASE_BRANCH
+    </td>
+    <td>
+      [Optional] Check from the base branch. Defaults same as TARGET_BRANCH
+    </td>
   </tr>
 </table>
 
-#### Options
-
+#### Options:
 <table>
   <tr>
-    <td>--mode</td>
-    <td>Use `copy`/`move`/`worktree` to handle local path </td>
+    <td style="white-space: nowrap">
+      --component
+    </td>
+    <td>
+      Activate a component, only for `URL`/`PATH`
+    </td>
   </tr>
   <tr>
-    <td>--component</td>
-    <td>Activate a component, only for `URL`/`PATH`</td>
+    <td style="white-space: nowrap">
+      --mode
+    </td>
+    <td>
+      Use `copy`/`move`/`worktree` to handle local path
+    </td>
   </tr>
   <tr>
-    <td>--product-json</td>
-    <td>Repo-related product info</td>
+    <td style="white-space: nowrap">
+      --product-json
+    </td>
+    <td>
+      Repo-related product info
+    </td>
   </tr>
   <tr>
-    <td>--checkout-from-commit</td>
-    <td>Checkout the feature branch from the commit instead of the latest base branch. It only works in a feature.</td>
-  </tr>
-  <tr>
-    <td>--recurse-submodules</td>
-		<td>After the clone is created, initialize all submodules within, using their default settings.</td>
-  </tr>
-  <tr>
-    <td>--keep-local-changes</td>
-    <td>Keep local changes when add a local repository with copy/move mode.</td>
+    <td style="white-space: nowrap">
+      --tool
+    </td>
+    <td>
+      Use the specified dependency management tool
+    </td>
   </tr>
 </table>
 
-#### Example
+#### Flags:
+<table>
+  <tr>
+    <td style="white-space: nowrap">
+      --activate-all-components
+    </td>
+    <td>
+      Activate all components. Default value will be true if add a repo, while default value will be false if add a component. Use `mbox config dependency_manager.activate_all_components_after_add_repo true/false` to change the default behavior.
+    </td>
+  </tr>
+  <tr>
+    <td style="white-space: nowrap">
+      --checkout-from-commit
+    </td>
+    <td>
+      Checkout the feature branch from the commit instead of the latest base branch. It only works in a feature.
+    </td>
+  </tr>
+  <tr>
+    <td style="white-space: nowrap">
+      --keep-local-changes
+    </td>
+    <td>
+      Keep local changes when add a local repository with copy/move mode.
+    </td>
+  </tr>
+  <tr>
+    <td style="white-space: nowrap">
+      --recurse-submodules
+    </td>
+    <td>
+      After the clone is created, initialize all submodules within, using their default settings.
+    </td>
+  </tr>
+</table>
 
-```shell
-$ mbox add ./../repo1  # add ../../repo1 into current feature
+#### Example:
+```bash
+# Copy a relative path into current feature, and keep the local changes.
+$ mbox add ../repo1 --mode copy --keep-local-changes
+
+# Download a remote url into current feature
+$ mbox add git@github.com:xx/xxx.git
+
+# Download a repository with a name, the name maybe a component name or a repository name
+$ mbox add AFNetworking
 ```
 
-### mbox bundle
 
-```shell
-$ mbox bundle COMMAND [--no-color] [--verbose] [ARGS]
+## mbox bundle
+
 ```
-
+$ mbox bundle
+```
 Redirect to Bundler with MBox environment
 
-
-#### Example
-
-```shell
-$ mbox bundle update #  Update your gems to the latest available versions
+#### Example:
+```bash
+# Install gems with bundler
+$ mbox bundle install
 ```
 
-### mbox config
 
-```shell
+## mbox config
+
+```
 $ mbox config [NAME] [VALUE]
 ```
+Get/Set Default Configuration
 
- Get/Set Default Configuration
-
-#### Arguments
-
+#### Arguments:
 <table>
   <tr>
-    <td>NAME</td>
-    <td>[Optional] Config Name</td>
+    <td style="white-space: nowrap">
+      NAME
+    </td>
+    <td>
+      [Optional] Config Name
+    </td>
   </tr>
-    <tr>
-    <td>VALUE</td>
-    <td>[Optional] Config Value</td>
+  <tr>
+    <td style="white-space: nowrap">
+      VALUE
+    </td>
+    <td>
+      [Optional] Config Value
+    </td>
   </tr>
 </table>
 
-
-#### Example
-
-```shell
-$ mbox config  #  Get Default Configuration
-
-{
-  "plugins" : {
-    "MBoxCocoapods" : {
-
-    },
-    "MBoxCocoapodsIntegrate" : {
-
-    },
-    "MBoxDevices" : {
-
-    },
-    "MBoxMPaaS" : {
-
-    }
-  },
-  "plugins2" : {
-
-  }
-}
-```
-
-### mbox container
-
-```shell
-$ mbox container
-```
-
-Manage Container
-
-#### Commands
-
+#### Flags:
 <table>
   <tr>
-    <td>+ disuse</td>
-    <td>Switch container in current feature</td>
+    <td style="white-space: nowrap">
+      -d
+    </td>
+    <td style="white-space: nowrap">
+      --delete
+    </td>
+    <td>
+      Delete configuration to restore default value.
+    </td>
   </tr>
   <tr>
-    <td>+ list</td>
-    <td>List available containers in current feature</td>
+    <td style="white-space: nowrap">
+      -g
+    </td>
+    <td style="white-space: nowrap">
+      --global
+    </td>
+    <td>
+      Apply to global configuration.
+    </td>
   </tr>
   <tr>
-    <td>+ use</td>
-    <td>Switch container in current feature</td>
+    <td style="white-space: nowrap">
+    </td>
+    <td style="white-space: nowrap">
+      --rc
+    </td>
+    <td>
+      Apply to `~/.mboxrc`.
+    </td>
+  </tr>
+  <tr>
+    <td style="white-space: nowrap">
+      -w
+    </td>
+    <td style="white-space: nowrap">
+      --workspace
+    </td>
+    <td>
+      Use workspace setting
+    </td>
   </tr>
 </table>
 
+#### Example:
+```bash
+# Get a value from gloal configuration
+$ mbox config key --global
 
-#### Example
+# Show all configs
+$ mbox config
 
-```shell
-$ mbox container list  # List available containers in current feature
+# Set a configuration in global configuration
+$ mbox config key value --global
 
-List available containers:
-      MBoxReposDemo  Bundler  
+# Delete a configuation in global configuration
+$ mbox config key --delete
 ```
 
-### mbox deactivate
 
-```shell
+## mbox container disuse
+
+```
+$ mbox container disuse NAME
+```
+Switch container in current feature
+
+#### Arguments:
+<table>
+  <tr>
+    <td style="white-space: nowrap">
+      NAME
+    </td>
+    <td>
+      Container Name
+    </td>
+  </tr>
+</table>
+
+## mbox container list
+
+```
+$ mbox container list
+```
+List available containers in current feature
+
+#### Example:
+```bash
+# List all containers in current feature:
+$ mbox container list
+List avaliable containers:
+    MBoxReposDemo  Bundler
+```
+
+
+## mbox container use
+
+```
+$ mbox container use NAME
+```
+Switch container in current feature
+
+#### Arguments:
+<table>
+  <tr>
+    <td style="white-space: nowrap">
+      NAME
+    </td>
+    <td>
+      Container Name
+    </td>
+  </tr>
+</table>
+
+## mbox deactivate
+
+```
 $ mbox deactivate NAME
 ```
-
 Deactivate a or more components
 
-#### Arguments
-
+#### Arguments:
 <table>
   <tr>
-    <td>NAME</td>
-    <td>Repo/Component Name</td>
+    <td style="white-space: nowrap">
+      NAME
+    </td>
+    <td>
+      Repo/Component Name
+    </td>
   </tr>
 </table>
 
+#### Example:
+```bash
+# Deactivate all components in the `repo1`
+$ mbox deactivate repo1
 
-#### Example
-
-```shell
-$ mbox deactivate repo1 
+# Deactivate the component named `component1` in the `repo1`
 $ mbox deactivate repo1/component1
 ```
 
-### mbox depend
 
-```shell
+## mbox depend
+
+```
 $ mbox depend [NAME]
 ```
-
 Show/Change dependencies
 
-#### Arguments
-
+#### Arguments:
 <table>
   <tr>
-    <td>NAME</td>
-    <td>[Optional] The dependency name</td>
+    <td style="white-space: nowrap">
+      NAME
+    </td>
+    <td>
+      [Optional] The dependency name
+    </td>
   </tr>
 </table>
 
+#### Options:
+<table>
+  <tr>
+    <td style="white-space: nowrap">
+      --branch
+    </td>
+    <td>
+      Set git branch
+    </td>
+  </tr>
+  <tr>
+    <td style="white-space: nowrap">
+      --commit
+    </td>
+    <td>
+      Set git commit
+    </td>
+  </tr>
+  <tr>
+    <td style="white-space: nowrap">
+      --git
+    </td>
+    <td>
+      Set git url
+    </td>
+  </tr>
+  <tr>
+    <td style="white-space: nowrap">
+      --path
+    </td>
+    <td>
+      Set local path
+    </td>
+  </tr>
+  <tr>
+    <td style="white-space: nowrap">
+      --source
+    </td>
+    <td>
+      Set source
+    </td>
+  </tr>
+  <tr>
+    <td style="white-space: nowrap">
+      --tag
+    </td>
+    <td>
+      Set git tag
+    </td>
+  </tr>
+  <tr>
+    <td style="white-space: nowrap">
+      --tool
+    </td>
+    <td>
+      Use the specified dependency management tool
+    </td>
+  </tr>
+  <tr>
+    <td style="white-space: nowrap">
+      --version
+    </td>
+    <td>
+      Set version
+    </td>
+  </tr>
+</table>
 
-#### Example
+#### Flags:
+<table>
+  <tr>
+    <td style="white-space: nowrap">
+      --binary
+    </td>
+    <td>
+      Use binary version
+    </td>
+  </tr>
+  <tr>
+    <td style="white-space: nowrap">
+      --reset
+    </td>
+    <td>
+      Reset to default version
+    </td>
+  </tr>
+  <tr>
+    <td style="white-space: nowrap">
+      --show-all
+    </td>
+    <td>
+      Show all dependencies
+    </td>
+  </tr>
+  <tr>
+    <td style="white-space: nowrap">
+      --show-changes
+    </td>
+    <td>
+      Show changed dependencies by MBox and other tools.
+    </td>
+  </tr>
+  <tr>
+    <td style="white-space: nowrap">
+      --source
+    </td>
+    <td>
+      Use source version
+    </td>
+  </tr>
+</table>
 
-```shell
-$ mbox depend  # Show dependencies
+#### Example:
+```bash
+# Change a dependency version
+$ mbox depend AFNetworking --version 2.0
+
+# Show all changed dependencies
+$ mbox depend
+AFNetworking: version 2.0
 ```
 
-### mbox env
 
-```shell
+## mbox doc
+
+```
+$ mbox doc
+```
+Output all commands
+
+#### Options:
+<table>
+  <tr>
+    <td style="white-space: nowrap">
+      --output-path
+    </td>
+    <td>
+      Output to the file
+    </td>
+  </tr>
+</table>
+
+#### Flags:
+<table>
+  <tr>
+    <td style="white-space: nowrap">
+      --markdown
+    </td>
+    <td>
+      Output with markdown format
+    </td>
+  </tr>
+</table>
+
+## mbox env
+
+```
 $ mbox env
 ```
+Show MBox Environment
 
-Show mbox environment
-
-
-#### Example
-
-```shell
-$ mbox env  # Show Mbox environment
-```
-
-### mbox exec 
-
-```shell
-$ mbox exec [OPTIONS] [ARGUMENTS...]
-```
-
-exec command line in MBox environment
-
-#### Example
-
-```shell
-$ mbox exec echo HelloWorld
-
-HelloWorld
-```
-
-### mbox feature
-
-```shell
-$ mbox feature
-```
-
-Manage Features
-
-#### Commands
-
+#### Options:
 <table>
   <tr>
-    <td>+ clean</td>
-    <td>Clean merged feature</td>
-  </tr>
-  <tr>
-    <td>+ export</td>
-    <td>Export a json from feature</td>
-  </tr>
-  <tr>
-    <td>+ merge</td>
-    <td>Create a MR to target branch</td>
-  </tr>
-  <tr>
-    <td>+ finish</td>
-    <td>Finish current feature</td>
-  </tr>
-  <tr>
-    <td>+ free</td>
-    <td>Switch to the `Free Mode` feature</td>
-  </tr>
-  <tr>
-    <td>+ import</td>
-    <td>Import a json/url as a feature</td>
-  </tr>
-  <tr>
-    <td>+ list</td>
-    <td>List all features</td>
-  </tr>
-  <tr>
-    <td>+ remove</td>
-    <td>Remove a feature</td>
-  </tr>
-  <tr>
-    <td>+ start</td>
-    <td>Create a new feature, or continue a exist feature</td>
+    <td style="white-space: nowrap">
+      --only
+    </td>
+    <td>
+      Only show information. Avaliable: ROOT/SYSTEM/PLUGINS
+    </td>
   </tr>
 </table>
 
+## mbox exec
 
-#### Example
+```
+$ mbox exec
+```
+Exec command line in MBox Environment
 
-```shell
-$ mbox feature free  # Switch to the `Free Mode` feature
+#### Example:
+```bash
+# echo the `pwd` in workspace
+$ mbox exec pwd
+
+# echo environment variable
+$ mbox exec printenv
 ```
 
-### mbox gem
 
+## mbox feature clean
+
+```
+$ mbox feature clean
+```
+Clean merged feature
+
+## mbox feature export
+
+```
+$ mbox feature export [NAME]
+```
+Export a json from feature
+
+#### Arguments:
+<table>
+  <tr>
+    <td style="white-space: nowrap">
+      NAME
+    </td>
+    <td>
+      [Optional] The feature name will be exported.
+    </td>
+  </tr>
+</table>
+
+## mbox feature merge
+
+```
+$ mbox feature merge
+```
+Create a MR to target branch
+
+#### Flags:
+<table>
+  <tr>
+    <td style="white-space: nowrap">
+      --force
+    </td>
+    <td>
+      Force create the MR if there are some changes not be committed
+    </td>
+  </tr>
+  <tr>
+    <td style="white-space: nowrap">
+      --forward
+    </td>
+    <td>
+      Create the MR with repos which forward target branch
+    </td>
+  </tr>
+</table>
+
+## mbox feature finish
+
+```
+$ mbox feature finish
+```
+Finish current feature
+
+#### Flags:
+<table>
+  <tr>
+    <td style="white-space: nowrap">
+      --force
+    </td>
+    <td>
+      Force remove current feature if there are some changes
+    </td>
+  </tr>
+</table>
+
+## mbox feature free
+
+```
+$ mbox feature free
+```
+Switch to the `Free Mode` feature
+
+## mbox feature import
+
+```
+$ mbox feature import STRING
+```
+Import a json/url as a feature
+
+#### Arguments:
+<table>
+  <tr>
+    <td style="white-space: nowrap">
+      STRING
+    </td>
+    <td>
+      Feature JSON/URL
+    </td>
+  </tr>
+</table>
+
+#### Options:
+<table>
+  <tr>
+    <td style="white-space: nowrap">
+      --name
+    </td>
+    <td>
+      Use the name to override the name from the json
+    </td>
+  </tr>
+</table>
+
+#### Flags:
+<table>
+  <tr>
+    <td style="white-space: nowrap">
+      --check-branch-exists
+    </td>
+    <td>
+      Check if the feature branch exists
+    </td>
+  </tr>
+  <tr>
+    <td style="white-space: nowrap">
+      --keep-changes
+    </td>
+    <td>
+      Create a new feature with local changes
+    </td>
+  </tr>
+  <tr>
+    <td style="white-space: nowrap">
+      --recurse-submodules
+    </td>
+    <td>
+      After the clone is created, initialize all submodules within, using their default settings.
+    </td>
+  </tr>
+</table>
+
+## mbox feature list
+
+```
+$ mbox feature list
+```
+List all features
+
+## mbox feature remove
+
+```
+$ mbox feature remove [NAME]
+```
+Remove a feature
+
+#### Arguments:
+<table>
+  <tr>
+    <td style="white-space: nowrap">
+      NAME
+    </td>
+    <td>
+      [Optional] Feature Name
+    </td>
+  </tr>
+</table>
+
+#### Flags:
+<table>
+  <tr>
+    <td style="white-space: nowrap">
+      --all
+    </td>
+    <td>
+      remove all feature, will not remove current feature and FreeMode
+    </td>
+  </tr>
+  <tr>
+    <td style="white-space: nowrap">
+      --force
+    </td>
+    <td>
+      Force remove the feature if there are unmerged commits
+    </td>
+  </tr>
+  <tr>
+    <td style="white-space: nowrap">
+      --include-repo
+    </td>
+    <td>
+      remove cached repo if the repo is not used by other features
+    </td>
+  </tr>
+</table>
+
+## mbox feature start
+
+```
+$ mbox feature start NAME
+```
+Create a new feature, or continue a exist feature
+
+#### Arguments:
+<table>
+  <tr>
+    <td style="white-space: nowrap">
+      NAME
+    </td>
+    <td>
+      Feature Name
+    </td>
+  </tr>
+</table>
+
+#### Options:
+<table>
+  <tr>
+    <td style="white-space: nowrap">
+      --dependencies
+    </td>
+    <td>
+      Create a new feature with a custom dependency list. It is a JSON String, eg: {"Aweme": {"version": "1.0"}}
+    </td>
+  </tr>
+  <tr>
+    <td style="white-space: nowrap">
+      --prefix
+    </td>
+    <td>
+      Create a new feature with a custom branch prefix. Default is `feature/`, use `--prefix=` to disable it.
+    </td>
+  </tr>
+  <tr>
+    <td style="white-space: nowrap">
+      --repos
+    </td>
+    <td>
+      Create a new feature with a custom repo list. It is a JSON String, eg: {"Aweme": "develop"} or {"Aweme": {"base": "0ABCD", "base_type": "commit", "target_branch": "develop"}}
+    </td>
+  </tr>
+</table>
+
+#### Flags:
+<table>
+  <tr>
+    <td style="white-space: nowrap">
+      --checkout-from-remote
+    </td>
+    <td>
+      Create a new feature branch from remote base branch, it will fetch remote. Defaults is true if current is in a feature.
+    </td>
+  </tr>
+  <tr>
+    <td style="white-space: nowrap">
+      --clear
+    </td>
+    <td>
+      Create a new feature with a empty workspace
+    </td>
+  </tr>
+  <tr>
+    <td style="white-space: nowrap">
+      --keep-changes
+    </td>
+    <td>
+      Create a new feature with local changes
+    </td>
+  </tr>
+  <tr>
+    <td style="white-space: nowrap">
+      --pull
+    </td>
+    <td>
+      Pull remote branch after finish
+    </td>
+  </tr>
+  <tr>
+    <td style="white-space: nowrap">
+      --recurse-submodules
+    </td>
+    <td>
+      After the clone is created, initialize all submodules within, using their default settings.
+    </td>
+  </tr>
+</table>
+
+## mbox fork
+
+```
+$ mbox fork [PATHS [...]]
+```
+Quckly open git repository in the Fork app.
+
+#### Arguments:
+<table>
+  <tr>
+    <td style="white-space: nowrap">
+      PATHS
+    </td>
+    <td>
+      [Optional] Specific Path
+    </td>
+  </tr>
+</table>
+
+## mbox gem
+
+```
+$ mbox gem
+```
 Redirect to Gem with MBox environment
 
-```shell
-$ mbox gem COMMAND [ARGUMENTS...] [OPTIONS...]
+## mbox git
+
 ```
-
-### mbox git
-
-Execute git command for every repo
-
-```shell
 $ mbox git COMMAND
 ```
-
 Execute git command for every repo
 
-#### Commands
-
+#### Arguments:
 <table>
   <tr>
-    <td>+ config</td>
-    <td>Execute git command for every repo</td>
-  </tr>
-  <tr>
-    <td>+ hooks</td>
-    <td>Show/Set the git hooks for workspace</td>
+    <td style="white-space: nowrap">
+      COMMAND
+    </td>
+    <td>
+      The command will be executed
+    </td>
   </tr>
 </table>
 
-
-#### Arguments
-
+#### Options:
 <table>
   <tr>
-    <td>COMMAND</td>
-    <td>The command will be executed</td>
+    <td style="white-space: nowrap">
+      --no-repo
+    </td>
+    <td>
+      Exclude a repo, use this option multiple times to exclude multiple repos. Avaliable: mbox-core/mbox-git/mbox-workspace/mbox-dependency-manager/mbox-ruby/mbox-container/mbox-cocoapods/mbox-dev/mbox-dev-native/mbox-dev-ruby
+    </td>
+  </tr>
+  <tr>
+    <td style="white-space: nowrap">
+      --repo
+    </td>
+    <td>
+      Specify a repo, use this option multiple times to specify multiple repos. Avaliable: mbox-core/mbox-git/mbox-workspace/mbox-dependency-manager/mbox-ruby/mbox-container/mbox-cocoapods/mbox-dev/mbox-dev-native/mbox-dev-ruby
+    </td>
   </tr>
 </table>
 
+## mbox git config
 
-#### Example
-
-```shell
-$ mbox git status  # Show the working tree status fot every repo
-
-[MBoxReposDemo]
-  On branch main
-  Your branch is up to date with 'origin/main'.
-
-  Changes not staged for commit:
-    (use "git add/rm <file>..." to update what will be committed)
-    (use "git restore <file>..." to discard changes in working directory)
-  	deleted:    Example/Pods/Alamofire/LICENSE
-  	deleted:    Example/Pods/Alamofire/README.md
-  	 Untracked files:
-    (use "git add <file>..." to include in what will be committed)
-  	Example/Pods
-
-  	no changes added to commit (use "git add" and/or "git commit -a")
-[SnapKit]
-  	HEAD detached at 5.0.1
-  	nothing to commit, working tree clean
 ```
-
----
-
-### mbox git-sheet
-
-Execute git command for every repo and format output
-
-```shell
-$ mbox git-sheet
+$ mbox git config COMMAND
 ```
+Execute git command for every repo
 
+#### Arguments:
+<table>
+  <tr>
+    <td style="white-space: nowrap">
+      COMMAND
+    </td>
+    <td>
+      The command will be executed
+    </td>
+  </tr>
+</table>
+
+#### Flags:
+<table>
+  <tr>
+    <td style="white-space: nowrap">
+      --workspace
+    </td>
+    <td>
+      use the workspace config file
+    </td>
+  </tr>
+</table>
+
+## mbox git hooks
+
+```
+$ mbox git hooks
+```
+Show/Set the git hooks for workspace
+
+#### Flags:
+<table>
+  <tr>
+    <td style="white-space: nowrap">
+      --disable
+    </td>
+    <td>
+      Enable workspace hooks
+    </td>
+  </tr>
+  <tr>
+    <td style="white-space: nowrap">
+      --enable
+    </td>
+    <td>
+      Enable workspace hooks
+    </td>
+  </tr>
+</table>
+
+## mbox git-sheet fetch
+
+```
+$ mbox git-sheet fetch
+```
+Perform git fetch for every repo
+
+## mbox git-sheet pull
+
+```
+$ mbox git-sheet pull
+```
+Perform git pull for every repo
+
+## mbox git-sheet push
+
+```
+$ mbox git-sheet push
+```
+Perform git push for every repo
+
+## mbox git-sheet status
+
+```
+$ mbox git-sheet status
+```
 Show git status for every repo
 
-#### Commands
+## mbox go
 
-<table>
-  <tr>
-    <td>+ fetch</td>
-    <td>Perform git fetch for every repo</td>
-  </tr>
-  <tr>
-    <td>+ pull</td>
-    <td>Perform git pull for every repo</td>
-  </tr>
-  <tr>
-    <td>+ push</td>
-    <td>Perform git push for every repo</td>
-  </tr>
-  <tr>
-    <td>+ status</td>
-    <td>Show git status for every repo</td>
-  </tr>
-</table>
-
-
-#### Example
-
-```shell
-$ mbox git-sheet fetch  # Perform git fetch for every repo
-
-Fetching MBoxReposDemo
-Fetching SnapKit
-
-    MBoxReposDemo  [feature/featureTest]*  ->  main     ↳1  ↰0
-    SnapKit        [feature/featureTest]   ->  develop  ↳0  ↰0
 ```
-
----
-
-### mbox go
-
-```shell
 $ mbox go [NAME]
 ```
+Quckly open workspace.
 
-Quickly open workspace
-
-#### Arguments
-
+#### Arguments:
 <table>
   <tr>
-    <td>NAME</td>
-    <td>[Optional] Specific workspace file to open</td>
+    <td style="white-space: nowrap">
+      NAME
+    </td>
+    <td>
+      [Optional] Specific workspace file to open
+    </td>
   </tr>
 </table>
 
+## mbox init
 
-#### Example
-
-```shell
-$ mbox go # Quick open mboxDemoTest.xcworkspace
-
-Open `/workspace/mboxDemoTest.xcworkspace`
 ```
+$ mbox init [PLUGIN_GROUP [...]]
+```
+Init Workspace
 
----
+#### Arguments:
+<table>
+  <tr>
+    <td style="white-space: nowrap">
+      PLUGIN_GROUP
+    </td>
+    <td>
+      [Optional] A plugin set. Available: android/flutter/ios/macos/plugin/ruby
+    </td>
+  </tr>
+</table>
 
-### mbox merge
+#### Options:
+<table>
+  <tr>
+    <td style="white-space: nowrap">
+      --name
+    </td>
+    <td>
+      To set the new MBox workspace (folder) name.
+    </td>
+  </tr>
+  <tr>
+    <td style="white-space: nowrap">
+      --plugin
+    </td>
+    <td>
+      Config the plugin. It could be used many times to config more plugins.
+    </td>
+  </tr>
+</table>
 
-```shell
+## mbox kerberos destroy
+
+```
+$ mbox kerberos destroy [USEREMAIL]
+```
+Detroy all tickets
+
+#### Arguments:
+<table>
+  <tr>
+    <td style="white-space: nowrap">
+      USEREMAIL
+    </td>
+    <td>
+      [Optional] User Name, Defaults: james.zhan@bytedance.com
+    </td>
+  </tr>
+</table>
+
+#### Flags:
+<table>
+  <tr>
+    <td style="white-space: nowrap">
+      --keychain
+    </td>
+    <td>
+      Remove password from keychain
+    </td>
+  </tr>
+</table>
+
+## mbox kerberos init
+
+```
+$ mbox kerberos init [USEREMAIL]
+```
+Acquire initial tickets
+
+#### Arguments:
+<table>
+  <tr>
+    <td style="white-space: nowrap">
+      USEREMAIL
+    </td>
+    <td>
+      [Optional] User Name, Defaults: james.zhan@bytedance.com
+    </td>
+  </tr>
+</table>
+
+#### Flags:
+<table>
+  <tr>
+    <td style="white-space: nowrap">
+      --password
+    </td>
+    <td>
+      User Password
+    </td>
+  </tr>
+</table>
+
+## mbox kerberos list
+
+```
+$ mbox kerberos list [EMAIL]
+```
+List Kerberos credentials
+
+#### Arguments:
+<table>
+  <tr>
+    <td style="white-space: nowrap">
+      EMAIL
+    </td>
+    <td>
+      [Optional] User Email
+    </td>
+  </tr>
+</table>
+
+## mbox kerberos renew
+
+```
+$ mbox kerberos renew [USEREMAIL]
+```
+Acquire renew tickets
+
+#### Arguments:
+<table>
+  <tr>
+    <td style="white-space: nowrap">
+      USEREMAIL
+    </td>
+    <td>
+      [Optional] User Name, Defaults: james.zhan@bytedance.com
+    </td>
+  </tr>
+</table>
+
+## mbox login
+
+```
+$ mbox login [TIMEOUT]
+```
+Login MBox
+
+#### Arguments:
+<table>
+  <tr>
+    <td style="white-space: nowrap">
+      TIMEOUT
+    </td>
+    <td>
+      [Optional] Maximum waiting time for Login
+    </td>
+  </tr>
+</table>
+
+## mbox logout
+
+```
+$ mbox logout
+```
+Logout MBox
+
+## mbox merge
+
+```
 $ mbox merge [NAME]
 ```
+Merge `other feature`/`target branch` into current feature
 
-Merge \`other feature\`/\`target branch` into current feature
-
-#### Arguments
-
+#### Arguments:
 <table>
   <tr>
-    <td>NAME</td>
-    <td>[Optional] Merge the Feature into current feature</td>
+    <td style="white-space: nowrap">
+      NAME
+    </td>
+    <td>
+      [Optional] Merge the Feature into current feature
+    </td>
   </tr>
 </table>
 
+#### Options:
+<table>
+  <tr>
+    <td style="white-space: nowrap">
+      --no-repo
+    </td>
+    <td>
+      Exclude a repo, use this option multiple times to exclude multiple repos.
+    </td>
+  </tr>
+  <tr>
+    <td style="white-space: nowrap">
+      --repo
+    </td>
+    <td>
+      Specify a repo, use this option multiple times to specify multiple repos.
+    </td>
+  </tr>
+</table>
 
-#### Example
+#### Flags:
+<table>
+  <tr>
+    <td style="white-space: nowrap">
+      --dry-run
+    </td>
+    <td>
+      Do everything except actually merge.
+    </td>
+  </tr>
+</table>
 
-``` shell
-$ mbox merge featureTest  # Merge branch `other branch` into branch featureTest
+## mbox new
 
-[MBoxReposDemo]
-  Merge branch `origin/main` into branch `feature/featureTest`.
-  Merge Done!
-[SnapKit]
-  Merge branch `origin/develop` into branch `feature/featureTest`.
-  There is nothing to merge.
 ```
-
----
-
-### mbox new
-
-```shell
 $ mbox new NAME [BRANCH]
 ```
-
 Create a project in workspace
 
-#### Arguments
-
-<table border="1">
+#### Arguments:
+<table>
   <tr>
-    <td>NAME</td>
-    <td>Project Name</td>
-  </tr> 
+    <td style="white-space: nowrap">
+      NAME
+    </td>
+    <td>
+      Project Name
+    </td>
+  </tr>
   <tr>
-    <td>BRANCH</td>
-    <td>[Optional] Create the branch</td>
+    <td style="white-space: nowrap">
+      BRANCH
+    </td>
+    <td>
+      [Optional] Create the branch
+    </td>
   </tr>
 </table>
 
+## mbox open
 
-#### Example
-
-```shell
-$ mbox new test  # Create a test project in workspace
-
-Init git repository
-Checkout workspace
-Show Status
-  [Root]: /workspace
-
-  [Feature]: featureTest
-
-      MBoxReposDemo  https://github.com/MBoxPlus/MBoxReposDemo  [feature/featureTest]*  ->  [main]     ↳0  ↰0
-        + [CocoaPods]  MBoxReposDemo
-      SnapKit        https://github.com/SnapKit/SnapKit.git     [feature/featureTest]   ->  [develop]  ↳0  ↰0
-        + [CocoaPods]  SnapKit
-      test                                                      [feature/featureTest]   ->  [master]
-
-  [Containers]:
-   => MBoxReposDemo  Bundler + CocoaPods
 ```
-
----
-
-### mbox open
-
-```shell
 $ mbox open [PATHS [...]]
 ```
-
 Open specific path in MBox Environment
 
-#### Arguments
-
+#### Arguments:
 <table>
   <tr>
-    <td>PATHS</td>
-    <td>[Optional] Specific Path</td>
+    <td style="white-space: nowrap">
+      PATHS
+    </td>
+    <td>
+      [Optional] Specific Path
+    </td>
   </tr>
 </table>
 
-
-#### Example
-
-```shell
-$ mbox open  # Open workspace path in MBox Environment
-
-Open `/workspace`
-```
-
----
-
-### mbox plugin
-
-```shell
-$ mbox plugin
-```
-
-Manage Plugins
-
-#### Commands
-
+#### Flags:
 <table>
   <tr>
-    <td>+ disable</td>
-    <td>Disable plugins by name</td>
-  </tr>
-  <tr>
-    <td>+ enable</td>
-    <td>Enable plugins by name</td>
-  </tr>
-  <tr>
-    <td>+ launch</td>
-    <td>Run a plugin launcher</td>
-  </tr>
-  <tr>
-    <td>+ list</td>
-    <td>List all plugins</td>
-  </tr>
-  <tr>
-    <td>+ uninstall</td>
-    <td>Uninstall Plugins</td>
+    <td style="white-space: nowrap">
+      --logdir
+    </td>
+    <td>
+      Open log folder
+    </td>
   </tr>
 </table>
 
+## mbox plugin build
 
-#### Example
-
-```shell
-$ mbox plugin disable cocopods  # Disable cocoapods plugin
-
-Modify file: `/workspace/.mboxconfig`
-  Disable plugin `cocopods` success!
 ```
+$ mbox plugin build [NAME [...]]
+```
+Build the development plugin(s)
 
----
+#### Arguments:
+<table>
+  <tr>
+    <td style="white-space: nowrap">
+      NAME
+    </td>
+    <td>
+      [Optional] Plugin Names, otherwise will release all plugins.
+    </td>
+  </tr>
+</table>
 
-### mbox pod
+#### Options:
+<table>
+  <tr>
+    <td style="white-space: nowrap">
+      --output-dir
+    </td>
+    <td>
+      The directory for the output
+    </td>
+  </tr>
+  <tr>
+    <td style="white-space: nowrap">
+      --stage
+    </td>
+    <td>
+      The build stage Avaliable: Launcher/Resource/Ruby/Electron/Native
+    </td>
+  </tr>
+</table>
 
-```shell
+#### Flags:
+<table>
+  <tr>
+    <td style="white-space: nowrap">
+      --clean
+    </td>
+    <td>
+      Clean output directory. Defaults: YES if no stage options.
+    </td>
+  </tr>
+  <tr>
+    <td style="white-space: nowrap">
+      --force
+    </td>
+    <td>
+      Force release exists version
+    </td>
+  </tr>
+  <tr>
+    <td style="white-space: nowrap">
+      --test
+    </td>
+    <td>
+      Run the unit test. Defaults: YES
+    </td>
+  </tr>
+</table>
+
+## mbox plugin dev
+
+```
+$ mbox plugin dev TEMPLATE [NAME]
+```
+Use a template to develop a MBox Plugin
+
+#### Arguments:
+<table>
+  <tr>
+    <td style="white-space: nowrap">
+      TEMPLATE
+    </td>
+    <td>
+      Plugin Template. Avaliable: Launcher/Resource/Ruby/Electron/Native
+    </td>
+  </tr>
+  <tr>
+    <td style="white-space: nowrap">
+      NAME
+    </td>
+    <td>
+      [Optional] Plugin Name (eg: MBoxCore)
+    </td>
+  </tr>
+</table>
+
+## mbox plugin disable
+
+```
+$ mbox plugin disable [NAME [...]]
+```
+Disable plugins by name.
+
+#### Arguments:
+<table>
+  <tr>
+    <td style="white-space: nowrap">
+      NAME
+    </td>
+    <td>
+      [Optional] Plugin names
+    </td>
+  </tr>
+</table>
+
+## mbox plugin enable
+
+```
+$ mbox plugin enable [NAME [...]]
+```
+Enable plugins by name.
+
+#### Arguments:
+<table>
+  <tr>
+    <td style="white-space: nowrap">
+      NAME
+    </td>
+    <td>
+      [Optional] Plugin names
+    </td>
+  </tr>
+</table>
+
+## mbox plugin install
+
+```
+$ mbox plugin install [NAME [...]]
+```
+Install Plugin
+
+#### Arguments:
+<table>
+  <tr>
+    <td style="white-space: nowrap">
+      NAME
+    </td>
+    <td>
+      [Optional] Names of Plugins. Empty(Default) indicate that install all plugins needed.
+    </td>
+  </tr>
+</table>
+
+#### Flags:
+<table>
+  <tr>
+    <td style="white-space: nowrap">
+      --update
+    </td>
+    <td>
+      Update plugin if needed.
+    </td>
+  </tr>
+</table>
+
+## mbox plugin launch
+
+```
+$ mbox plugin launch [NAME [...]]
+```
+Run a plugin launcher
+
+#### Arguments:
+<table>
+  <tr>
+    <td style="white-space: nowrap">
+      NAME
+    </td>
+    <td>
+      [Optional] Launcher names
+    </td>
+  </tr>
+</table>
+
+#### Options:
+<table>
+  <tr>
+    <td style="white-space: nowrap">
+      --role
+    </td>
+    <td>
+      Set current role, defaults to environment variable `MBOX_ROLES`
+    </td>
+  </tr>
+  <tr>
+    <td style="white-space: nowrap">
+      --script
+    </td>
+    <td>
+      Run the script name Avaliable: check/install/uninstall/upgrade
+    </td>
+  </tr>
+</table>
+
+## mbox plugin list
+
+```
+$ mbox plugin list
+```
+List all plugins
+
+## mbox plugin next-version
+
+```
+$ mbox plugin next-version [NEW-VERSION]
+```
+Increments the version numbers
+
+#### Arguments:
+<table>
+  <tr>
+    <td style="white-space: nowrap">
+      NEW-VERSION
+    </td>
+    <td>
+      [Optional] Set a version instead of Increments.
+    </td>
+  </tr>
+</table>
+
+## mbox plugin release
+
+```
+$ mbox plugin release [NAME [...]]
+```
+Release a/some development plugin(s)
+
+#### Arguments:
+<table>
+  <tr>
+    <td style="white-space: nowrap">
+      NAME
+    </td>
+    <td>
+      [Optional] Plugin Names, otherwise will release all plugins.
+    </td>
+  </tr>
+</table>
+
+## mbox plugin search
+
+```
+$ mbox plugin search NAME
+```
+Search plugins on the Plugin Market
+
+#### Arguments:
+<table>
+  <tr>
+    <td style="white-space: nowrap">
+      NAME
+    </td>
+    <td>
+      Plugin name
+    </td>
+  </tr>
+</table>
+
+## mbox plugin test
+
+```
+$ mbox plugin test [NAME [...]]
+```
+Test the native plugin(s)
+
+#### Arguments:
+<table>
+  <tr>
+    <td style="white-space: nowrap">
+      NAME
+    </td>
+    <td>
+      [Optional] Plugin Names, otherwise will test all plugins.
+    </td>
+  </tr>
+</table>
+
+#### Options:
+<table>
+  <tr>
+    <td style="white-space: nowrap">
+      --file
+    </td>
+    <td>
+      Only run specific test file
+    </td>
+  </tr>
+  <tr>
+    <td style="white-space: nowrap">
+      --method
+    </td>
+    <td>
+      Only run specific test method
+    </td>
+  </tr>
+</table>
+
+## mbox plugin uninstall
+
+```
+$ mbox plugin uninstall [NAME [...]]
+```
+Uninstall Plugins
+
+#### Arguments:
+<table>
+  <tr>
+    <td style="white-space: nowrap">
+      NAME
+    </td>
+    <td>
+      [Optional] Names of Plugins
+    </td>
+  </tr>
+</table>
+
+#### Flags:
+<table>
+  <tr>
+    <td style="white-space: nowrap">
+      --all
+    </td>
+    <td>
+      Uninstall all plugins in user directory
+    </td>
+  </tr>
+</table>
+
+## mbox pod
+
+```
 $ mbox pod
 ```
-
 Redirect to Bundler with MBox environment
 
-```shell
-$ pod COMMAND
+#### Example:
+```bash
+# Install gems with bundler
+$ mbox bundle install
 ```
 
-CocoaPods, the Cocoa library package manager
 
-#### Commands
+## mbox product add
 
+```
+$ mbox product add [NAME] [PLATFORM]
+```
+Add Product
+
+#### Arguments:
 <table>
   <tr>
-    <td>+ cache</td>
-    <td>Manipulate the CocoaPods cache</td>
+    <td style="white-space: nowrap">
+      NAME
+    </td>
+    <td>
+      [Optional] Product Name or AppID or URL
+    </td>
   </tr>
   <tr>
-    <td>+ deintegrate</td>
-    <td>Deintegrate CocoaPods from your project</td>
-  </tr>
-  <tr>
-    <td>+ env</td>
-    <td>Display pod environment</td>
-  </tr>
-  <tr>
-    <td>+ init</td>
-    <td>Generate a Podfile for the current directory</td>
-  </tr>
-  <tr>
-    <td>+ install</td>
-    <td>Install project dependencies according to versions from a Podfile.lock</td>
-  </tr>
-  <tr>
-    <td>+ ipc</td>
-    <td>Inter-process communication</td>
-  </tr>
-  <tr>
-    <td>+ lib</td>
-    <td>Develop pods</td>
-  </tr>
-  <tr>
-    <td>+ list</td>
-    <td>List pods</td>
-  </tr>
-  <tr>
-    <td>+ mbox</td>
-    <td>MBox support</td>
-  </tr>
-  <tr>
-    <td>+ outdated</td>
-    <td>Show outdated project dependencies</td>
-  </tr>
-  <tr>
-    <td>+ plugins</td>
-    <td>Show available CocoaPods plugins</td>
-  </tr>
-  <tr>
-    <td>+ repo</td>
-    <td>Manage spec-repositories</td>
-  </tr>
-  <tr>
-    <td>+ search</td>
-    <td>Search for pods</td>
-  </tr>
-  <tr>
-    <td>+ setup</td>
-    <td>Setup the CocoaPods environment</td>
-  </tr>
-  <tr>
-    <td>+ spec</td>
-    <td>Manage pod specs</td>
-  </tr>
-  <tr>
-    <td>+ trunk</td>
-    <td>Interact with the CocoaPods API (e.g. publishing new specs)</td>
-  </tr>
-  <tr>
-    <td>+ try</td>
-    <td>Try a Pod!</td>
-  </tr>
-  <tr>
-    <td>+ update</td>
-    <td>Update outdated project dependencies and create new Podfile.lock</td>
-  </tr>
-
-
-#### Options
-
-<table>
-  <tr>
-    <td>--allow-root</td>
-    <td>Allows CocoaPods to run as root</td>
-  </tr>
-  <tr>
-    <td>--silent</td>
-    <td>Show nothing</td>
-  </tr>
-  <tr>
-    <td>--version</td>
-    <td>Show the version of the tool</td>
-  </tr>
-  <tr>
-    <td>--verbose</td>
-    <td>Show more debugging information</td>
-  </tr>
-  <tr>
-    <td>--no-ansi</td>
-		<td>Show output without ANSI codes</td>
-  </tr>
-  <tr>
-    <td>--help</td>
-    <td>Show help banner of specified command</td>
+    <td style="white-space: nowrap">
+      PLATFORM
+    </td>
+    <td>
+      [Optional] Platform Name Avaliable: iOS/Android/Flutter
+    </td>
   </tr>
 </table>
 
+#### Options:
+<table>
+  <tr>
+    <td style="white-space: nowrap">
+      --json
+    </td>
+    <td>
+      Product information string
+    </td>
+  </tr>
+</table>
 
-#### Example
+## mbox product remove
 
-```shell
-$ mbox pod install  # Install project dependencies according to versions from a Podfile.lock
-
-[MBox] Redirect component `MBoxReposDemo` -> `MBoxReposDemo`
-[MBox] Redirect component `SnapKit` -> `SnapKit`
-Re-creating CocoaPods due to major version update.
-Analyzing dependencies
-Downloading dependencies
-Installing SnapKit 5.0.1
-Generating Pods project
-Integrating client project
-Pod installation complete! There are 3 dependencies from the Podfile and 3 total pods installed.
 ```
+$ mbox product remove [NAME]
+```
+Remove Product
 
----
+#### Arguments:
+<table>
+  <tr>
+    <td style="white-space: nowrap">
+      NAME
+    </td>
+    <td>
+      [Optional] Product Name or AppId
+    </td>
+  </tr>
+</table>
 
-### mbox remove
+## mbox product sync
 
-```shell
+```
+$ mbox product sync [NAME]
+```
+Sync Product
+
+#### Arguments:
+<table>
+  <tr>
+    <td style="white-space: nowrap">
+      NAME
+    </td>
+    <td>
+      [Optional] Product Name or AppId
+    </td>
+  </tr>
+</table>
+
+## mbox product update
+
+```
+$ mbox product update [NAME]
+```
+Update Product, it will redeploy dynamic repository if exists.
+
+#### Arguments:
+<table>
+  <tr>
+    <td style="white-space: nowrap">
+      NAME
+    </td>
+    <td>
+      [Optional] Product Name or AppID
+    </td>
+  </tr>
+</table>
+
+## mbox remove
+
+```
 $ mbox remove NAME [...]
 ```
-
 Remove project from workspace
 
-#### Arguments
-
+#### Arguments:
 <table>
   <tr>
-    <td>NAME</td>
-    <td>Repo Name</td>
+    <td style="white-space: nowrap">
+      NAME
+    </td>
+    <td>
+      Repo Name
+    </td>
   </tr>
 </table>
 
+#### Flags:
+<table>
+  <tr>
+    <td style="white-space: nowrap">
+      --all
+    </td>
+    <td>
+      Remove all repos
+    </td>
+  </tr>
+  <tr>
+    <td style="white-space: nowrap">
+      --force
+    </td>
+    <td>
+      Force remove repo if modified
+    </td>
+  </tr>
+  <tr>
+    <td style="white-space: nowrap">
+      --include-repo
+    </td>
+    <td>
+      Remove repo from `.mbox/repos`
+    </td>
+  </tr>
+</table>
 
-#### Example
+## mbox repo search
 
-```shell
-$ mbox remove test  # Remove test project from workspace
-
-Validate Repo
-Remove Repo
-Show Status
-  [Root]: /workspace/mboxDemoTest
-
-  [Feature]: featureTest
-
-      MBoxReposDemo  https://github.com/MBoxPlus/MBoxReposDemo  [feature/featureTest]*  ->  [main]     ↳0  ↰0
-        + [CocoaPods]  MBoxReposDemo
-      SnapKit        https://github.com/SnapKit/SnapKit.git     [feature/featureTest]   ->  [develop]  ↳0  ↰0
-        + [CocoaPods]  SnapKit
-
-  [Containers]:
-   => MBoxReposDemo  Bundler + CocoaPods
 ```
-
----
-
-### mbox repo
-
-```shell
-$ mbox repo
+$ mbox repo search NAME
 ```
-
 Manage Repos
 
-#### Commands
-
+#### Arguments:
 <table>
   <tr>
-    <td>+ search</td>
-    <td>Manage Repos</td>
+    <td style="white-space: nowrap">
+      NAME
+    </td>
+    <td>
+      The name to search
+    </td>
   </tr>
 </table>
 
+#### Flags:
+<table>
+  <tr>
+    <td style="white-space: nowrap">
+      --only-search-remote
+    </td>
+    <td>
+      Search repo on remote
+    </td>
+  </tr>
+</table>
 
-#### Example
+## mbox setup
 
-```shell
-$ mbox repo search MBoxReposDemo  # Search the information of repo
-
-base_branch: main
-base_type: branch
-components: []
-full_name: MBoxReposDemo@MBoxPlus
-name: MBoxReposDemo
-owner: MBoxPlus
-target_branch: main
-url: https://github.com/MBoxPlus/MBoxReposDemo
 ```
-
----
-
-### mbox setup
-
-```shell
 $ mbox setup
 ```
-
 Setup Command Line Tool
 
-#### Example
-
-```shell
-$ mbox setup  # Setup Command Line Tool
-
-Install mbox in `/usr/local/bin`
-Source mbox function in `~/.profile`
-
-Setup Completed.
-```
-
----
-
-### mbox status
-
-```shell
-$ mbox status [NAME]
-```
-
-Show Status
-
-#### Arguments
-
+#### Options:
 <table>
   <tr>
-    <td>NAME</td>
-    <td>[Optional] Show Other Feature</td>
+    <td style="white-space: nowrap">
+      --bin-dir
+    </td>
+    <td>
+      Output the executable bin to specific directory. Default value: `/usr/local/bin`
+    </td>
   </tr>
 </table>
 
+#### Flags:
+<table>
+  <tr>
+    <td style="white-space: nowrap">
+      --zsh
+    </td>
+    <td>
+      Install autocompletion support for zsh
+    </td>
+  </tr>
+</table>
 
-#### Example
+## mbox status
 
-```shell
-$ mbox status  # Show Status
-
-[Root]: /workspace
-
-[Feature]: featureTest
-
-    MBoxReposDemo  https://github.com/MBoxPlus/MBoxReposDemo  [feature/featureTest]*  ->  [main]     ↳0  ↰0
-      + [CocoaPods]  MBoxReposDemo
-    SnapKit        https://github.com/SnapKit/SnapKit.git     [feature/featureTest]   ->  [develop]  ↳0  ↰0
-      + [CocoaPods]  SnapKit
-
-[Containers]:
- => MBoxReposDemo  Bundler + CocoaPods
 ```
+$ mbox status [NAME]
+```
+Show Status
 
----
+#### Arguments:
+<table>
+  <tr>
+    <td style="white-space: nowrap">
+      NAME
+    </td>
+    <td>
+      [Optional] Show Other Feature
+    </td>
+  </tr>
+</table>
+
+#### Options:
+<table>
+  <tr>
+    <td style="white-space: nowrap">
+      --only
+    </td>
+    <td>
+      Only show information. Avaliable: root/feature/repos/dependencies/containers/products
+    </td>
+  </tr>
+</table>
+
+#### Flags:
+<table>
+  <tr>
+    <td style="white-space: nowrap">
+      --sync
+    </td>
+    <td>
+      Sync config and repos
+    </td>
+  </tr>
+</table>
+
+## mbox stree
+
+```
+$ mbox stree [PATHS [...]]
+```
+Quckly open git repository in the SourceTree app.
+
+#### Arguments:
+<table>
+  <tr>
+    <td style="white-space: nowrap">
+      PATHS
+    </td>
+    <td>
+      [Optional] Specific Path
+    </td>
+  </tr>
+</table>
+
+## mbox tower
+
+```
+$ mbox tower [PATHS [...]]
+```
+Quckly open git repository in the Tower app.
+
+#### Arguments:
+<table>
+  <tr>
+    <td style="white-space: nowrap">
+      PATHS
+    </td>
+    <td>
+      [Optional] Specific Path
+    </td>
+  </tr>
+</table>
+
+## mbox update
+
+```
+$ mbox update
+```
+Upgrade MBox Application
+
+#### Flags:
+<table>
+  <tr>
+    <td style="white-space: nowrap">
+      --beta
+    </td>
+    <td>
+      Upgrade to the beta version
+    </td>
+  </tr>
+  <tr>
+    <td style="white-space: nowrap">
+      --force
+    </td>
+    <td>
+      Force download the latest version
+    </td>
+  </tr>
+  <tr>
+    <td style="white-space: nowrap">
+      --stable
+    </td>
+    <td>
+      Upgrade to the stable version
+    </td>
+  </tr>
+</table>
+
+## mbox yarn repo
+
+```
+$ mbox yarn repo
+```
+Operation for a single repo.
+
+## mbox yarn repos info
+
+```
+$ mbox yarn repos info
+```
+Show package information about your repos.
+
