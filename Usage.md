@@ -1,4 +1,4 @@
-## Workspace
+## Create a Workspace
 
 Use command `mbox init [PLUGIN_GROUP]` to create a workspace. For example, `mbox init ios` will make the current directory become a MBox workspace.
 
@@ -78,9 +78,9 @@ Flags:
         --version     Show version
 ```
 
-### Manage Repos
+## Manage Repos
 
-#### Add Repo
+### Add Repo
 
 Use command `mbox add` to clone a repo into current feature. 
 
@@ -105,7 +105,7 @@ Checkout branch `main`
 Add repo `MBoxReposDemo` success.
 Remove Local Dependency
 Show Status
-  [Root]: /Users/bytedance/liyao/demo
+  [Root]: /Users/mbox/demo
 
   [Feature]: FreeMode
 
@@ -120,13 +120,13 @@ In [free mode](https://github.com/MBoxPlus/mbox/wiki/MBox-terminology#free-mode-
 
 In [feature mode](https://github.com/MBoxPlus/mbox/wiki/MBox-terminology#free-mode-%E5%92%8C-feature-mode), there are **3** arguments. The 1st is the git URL. The 2nd is the base branch/tag/commit, which is what the feature branch is checked out from. The 3rd is the target branch which is used for merge request.
 
-#### Remove Repo
+### Remove Repo
 
 Use command `mbox remove` to remove a repo from the current feature.
 
 ```shell
 $ mbox status
-[Root]: /Users/bytedance/liyao/demo
+[Root]: /Users/mbox/demo
 
 [Feature]: test
 
@@ -142,7 +142,7 @@ $ mbox remove SnapKit
 Validate Repo
 Remove Repo
 Show Status
-  [Root]: /Users/bytedance/liyao/demo
+  [Root]: /Users/mbox/demo
 
   [Feature]: test
 
@@ -155,9 +155,9 @@ Show Status
 
 Remove the repo called `SnapKit` from the feature `test`. All the operations on the repo just have an effect on the current feature.
 
-### Manage Features
+## Manage Features
 
-#### List Features
+### List Features
 
 We can use `mbox feature list` to list all the features of the current workspace.
 
@@ -173,7 +173,7 @@ $ mbox feature list
 ```
 There are 2 features (named 'bugfix' and 'test') and a free-mode in this workspace.
 
-#### Create Feature
+### Create Feature
 
 We can create a new feature base on free-mode or another feature and copy a list of repos to the new workspace. However, there are some differences between the two cases. 
 
@@ -205,10 +205,53 @@ Show Status
 [!] The sandbox is not in sync with the Podfile.lock. You may need to run 'mbox pod install'.
 ```
 
-#### Remove Feature
+### Remove Feature
 
 Use command `mbox feature remove` to remove a feature.
 
 ## Multiple Containers
 
-## Git Management
+Multiple containers are allowed in a MBox feature. We can use `mbox container use/disuse` to switch between containers.
+
+```shell
+$ mbox status
+[Root]: /Users/mbox/demo
+
+[Feature]: FreeMode
+
+    SnapKit         https://github.com/SnapKit/SnapKit.git          [develop]   ↑0  ↓0
+      + [CocoaPods]  SnapKit
+    MBoxReposDemo   https://github.com/MBoxPlus/MBoxReposDemo.git   [main]      ↑0  ↓0
+      + [CocoaPods]  MBoxReposDemo
+    MBoxReposDemo2  https://github.com/MBoxTest/MBoxReposDemo2.git  [main]      ↑0  ↓0
+      + [CocoaPods]  MBoxReposDemo2
+
+[Containers]:
+ => MBoxReposDemo   Bundler + CocoaPods
+    MBoxReposDemo2  Bundler + CocoaPods
+```
+
+```shell
+$ mbox container use MBoxReposDemo2
+Use container `MBoxReposDemo2` for CocoaPods
+Use container `MBoxReposDemo2` for Bundler
+Show Status
+  [Root]: /Users/mbox/demo
+
+  [Feature]: FreeMode
+
+      SnapKit         https://github.com/SnapKit/SnapKit.git          [develop]   ↑0  ↓0
+        + [CocoaPods]  SnapKit
+      MBoxReposDemo   https://github.com/MBoxPlus/MBoxReposDemo.git   [main]      ↑0  ↓0
+        + [CocoaPods]  MBoxReposDemo
+      MBoxReposDemo2  https://github.com/MBoxTest/MBoxReposDemo2.git  [main]      ↑0  ↓0
+        + [CocoaPods]  MBoxReposDemo2
+
+  [Containers]:
+      MBoxReposDemo   Bundler + CocoaPods
+   => MBoxReposDemo2  Bundler + CocoaPods
+```
+
+This workspace have 2 containers `MBoxReposDemo` and `MBoxReposDemo2` and we switched the current container from `MBoxReposDemo` to `MBoxReposDemo2`. MBox will now reintegrate the `MBoxReposDemo2` project when do `mbox pod install`.
+
+We have to choose one container before run project integration command, such as `mbox pod install` or `mbox bundle install`.
