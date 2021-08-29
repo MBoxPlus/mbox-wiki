@@ -10,6 +10,7 @@ Welcome to the MBox wiki, this is mainly an index for the guides.
 
 # Advanced
 
-[CLI Documentation](https://github.com/MBoxPlus/mbox/wiki/CLI-documentation)
+[Tutorial](https://github.com/MBoxPlus/mbox/wiki/Tutorial)
 
+[CLI Documentation](https://github.com/MBoxPlus/mbox/wiki/CLI-documentation)
 
