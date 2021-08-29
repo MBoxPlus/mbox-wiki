@@ -1,5 +1,3 @@
-# MBox Terminology
-
 [简体中文](https://github.com/MBoxPlus/mbox/wiki/MBox-terminology-cn) | **English**
 
 ## Workspace

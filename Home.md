@@ -2,7 +2,7 @@ Welcome to the MBox wiki, this is mainly an index for the guides.
 
 # Getting Started
 
-[MBox Terminology](https://github.com/MBoxPlus/mbox/blob/main/doc/MBox-terminology.md)
+[MBox Terminology](https://github.com/MBoxPlus/mbox/wiki/MBox-terminology)
 
 [Quick Start Demo](https://github.com/MBoxPlus/mbox/blob/main/doc/quick_start_demo_ios.md)
 
