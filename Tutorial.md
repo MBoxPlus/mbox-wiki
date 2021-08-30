@@ -157,19 +157,61 @@ Remove the repo called `SnapKit` from the feature `test`. All the operations on 
 
 ### Git
 
+#### mbox git
+
 `mbox git` helps manage many git repositories by executing git command for each repository. `mbox git` is based on [libgit2](https://github.com/libgit2/libgit2) and not meant to replace git. You can still use git to manage the repository under the MBox workspace.
 
 ```shell
-$ mbox git status
-[MBoxReposDemo]
-  On branch feature/test_git
-  nothing to commit, working tree clean
-[MBoxReposDemo2]
-  On branch feature/test_git
-  nothing to commit, working tree clean
-[SnapKit]
-  On branch feature/test_git
-  nothing to commit, working tree clean
+# Execute `pull` in each repo
+$ mbox git pull
+[mbox-core]
+  Already up to date.
+[mbox-git]
+  Already up to date.
+
+# Execute `fetch` command in each repo
+$ mbox git fetch
+
+# Go to each repository to checkout to master branch
+$ mbox git checkout master
+[mbox-core]
+  Updating files: 100% (6214/6214), done.
+  Switched to branch 'master'
+  Your branch is up to date with 'origin/master'.
+[mbox-git]
+  Switched to branch 'master'
+  Your branch is up to date with 'origin/master'.
+
+# Discard the changes of all repositories
+❯ mbox git checkout .
+[mbox-core]
+  Updated 3 paths from the index
+[mbox-git]
+  Updated 0 paths from the index
+```
+
+#### mbox git-sheet
+
+```shell
+mbox git-sheet
+```
+
+It is similar to `mbox git`. The output of the git command are nicely formatted with a tabular form.
+
+Supported command：
+
+- fetch
+- pull
+- push
+- status
+
+Example:
+
+```shell
+$ mbox git-sheet status
+    mbox-core                [master]   ↑0  ↓0
+    mbox-ruby                [master]   ↑0  ↓0
+    mbox-container           [master]*  ↑0  ↓0
 ```
 
 `mbox merge` is another git related command, which only can be used in feature mode. This command helps you to make it easier to the merge target branch into the current feature branch.
