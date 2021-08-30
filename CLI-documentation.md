@@ -5,7 +5,8 @@ $ mbox activate NAME
 ```
 Activate a or more components
 
-#### Arguments:
+<u>Arguments:</u>
+
 <table>
   <tr>
     <td style="white-space: nowrap">
@@ -17,7 +18,8 @@ Activate a or more components
   </tr>
 </table>
 
-#### Options:
+<u>Options:</u>
+
 <table>
   <tr>
     <td style="white-space: nowrap">
@@ -29,7 +31,8 @@ Activate a or more components
   </tr>
 </table>
 
-#### Flags:
+<u>Flags:</u>
+
 <table>
   <tr>
     <td style="white-space: nowrap">
@@ -41,7 +44,8 @@ Activate a or more components
   </tr>
 </table>
 
-#### Example:
+<u>Example:</u>
+
 ```bash
 # Activate all components in the `repo1`
 $ mbox activate repo1
@@ -58,7 +62,8 @@ $ mbox add NAME [TARGET_BRANCH] [BASE_BRANCH]
 ```
 Add a repo into current feature
 
-#### Arguments:
+<u>Arguments:</u>
+
 <table>
   <tr>
     <td style="white-space: nowrap">
@@ -86,7 +91,8 @@ Add a repo into current feature
   </tr>
 </table>
 
-#### Options:
+<u>Options:</u>
+
 <table>
   <tr>
     <td style="white-space: nowrap">
@@ -122,7 +128,8 @@ Add a repo into current feature
   </tr>
 </table>
 
-#### Flags:
+<u>Flags:</u>
+
 <table>
   <tr>
     <td style="white-space: nowrap">
@@ -158,7 +165,8 @@ Add a repo into current feature
   </tr>
 </table>
 
-#### Example:
+<u>Example:</u>
+
 ```bash
 # Copy a relative path into current feature, and keep the local changes.
 $ mbox add ../repo1 --mode copy --keep-local-changes
@@ -178,7 +186,8 @@ $ mbox bundle
 ```
 Redirect to Bundler with MBox environment
 
-#### Example:
+<u>Example:</u>
+
 ```bash
 # Install gems with bundler
 $ mbox bundle install
@@ -192,7 +201,8 @@ $ mbox config [NAME] [VALUE]
 ```
 Get/Set Default Configuration
 
-#### Arguments:
+<u>Arguments:</u>
+
 <table>
   <tr>
     <td style="white-space: nowrap">
@@ -212,7 +222,8 @@ Get/Set Default Configuration
   </tr>
 </table>
 
-#### Flags:
+<u>Flags:</u>
+
 <table>
   <tr>
     <td style="white-space: nowrap">
@@ -259,7 +270,8 @@ Get/Set Default Configuration
   </tr>
 </table>
 
-#### Example:
+<u>Example:</u>
+
 ```bash
 # Get a value from gloal configuration
 $ mbox config key --global
@@ -280,9 +292,10 @@ $ mbox config key --delete
 ```
 $ mbox container disuse NAME
 ```
-Switch container in current feature
+Deactive container in current feature
 
-#### Arguments:
+<u>Arguments:</u>
+
 <table>
   <tr>
     <td style="white-space: nowrap">
@@ -301,7 +314,8 @@ $ mbox container list
 ```
 List available containers in current feature
 
-#### Example:
+<u>Example:</u>
+
 ```bash
 # List all containers in current feature:
 $ mbox container list
@@ -315,9 +329,10 @@ List avaliable containers:
 ```
 $ mbox container use NAME
 ```
-Switch container in current feature
+Active container in current feature
 
-#### Arguments:
+<u>Arguments:</u>
+
 <table>
   <tr>
     <td style="white-space: nowrap">
@@ -336,7 +351,8 @@ $ mbox deactivate NAME
 ```
 Deactivate a or more components
 
-#### Arguments:
+<u>Arguments:</u>
+
 <table>
   <tr>
     <td style="white-space: nowrap">
@@ -348,7 +364,8 @@ Deactivate a or more components
   </tr>
 </table>
 
-#### Example:
+<u>Example:</u>
+
 ```bash
 # Deactivate all components in the `repo1`
 $ mbox deactivate repo1
@@ -365,7 +382,8 @@ $ mbox depend [NAME]
 ```
 Show/Change dependencies
 
-#### Arguments:
+<u>Arguments:</u>
+
 <table>
   <tr>
     <td style="white-space: nowrap">
@@ -377,7 +395,8 @@ Show/Change dependencies
   </tr>
 </table>
 
-#### Options:
+<u>Options:</u>
+
 <table>
   <tr>
     <td style="white-space: nowrap">
@@ -445,7 +464,8 @@ Show/Change dependencies
   </tr>
 </table>
 
-#### Flags:
+<u>Flags:</u>
+
 <table>
   <tr>
     <td style="white-space: nowrap">
@@ -489,7 +509,8 @@ Show/Change dependencies
   </tr>
 </table>
 
-#### Example:
+<u>Example:</u>
+
 ```bash
 # Change a dependency version
 $ mbox depend AFNetworking --version 2.0
@@ -507,7 +528,8 @@ $ mbox doc
 ```
 Output all commands
 
-#### Options:
+<u>Options:</u>
+
 <table>
   <tr>
     <td style="white-space: nowrap">
@@ -519,7 +541,8 @@ Output all commands
   </tr>
 </table>
 
-#### Flags:
+<u>Flags:</u>
+
 <table>
   <tr>
     <td style="white-space: nowrap">
@@ -538,7 +561,8 @@ $ mbox env
 ```
 Show MBox Environment
 
-#### Options:
+<u>Options:</u>
+
 <table>
   <tr>
     <td style="white-space: nowrap">
@@ -557,7 +581,8 @@ $ mbox exec
 ```
 Exec command line in MBox Environment
 
-#### Example:
+<u>Example:</u>
+
 ```bash
 # echo the `pwd` in workspace
 $ mbox exec pwd
@@ -581,7 +606,8 @@ $ mbox feature export [NAME]
 ```
 Export a json from feature
 
-#### Arguments:
+<u>Arguments:</u>
+
 <table>
   <tr>
     <td style="white-space: nowrap">
@@ -600,7 +626,8 @@ $ mbox feature merge
 ```
 Create a MR to target branch
 
-#### Flags:
+<u>Flags:</u>
+
 <table>
   <tr>
     <td style="white-space: nowrap">
@@ -627,7 +654,8 @@ $ mbox feature finish
 ```
 Finish current feature
 
-#### Flags:
+<u>Flags:</u>
+
 <table>
   <tr>
     <td style="white-space: nowrap">
@@ -653,7 +681,8 @@ $ mbox feature import STRING
 ```
 Import a json/url as a feature
 
-#### Arguments:
+<u>Arguments:</u>
+
 <table>
   <tr>
     <td style="white-space: nowrap">
@@ -665,7 +694,8 @@ Import a json/url as a feature
   </tr>
 </table>
 
-#### Options:
+<u>Options:</u>
+
 <table>
   <tr>
     <td style="white-space: nowrap">
@@ -677,7 +707,8 @@ Import a json/url as a feature
   </tr>
 </table>
 
-#### Flags:
+<u>Flags:</u>
+
 <table>
   <tr>
     <td style="white-space: nowrap">
@@ -719,7 +750,8 @@ $ mbox feature remove [NAME]
 ```
 Remove a feature
 
-#### Arguments:
+<u>Arguments:</u>
+
 <table>
   <tr>
     <td style="white-space: nowrap">
@@ -731,7 +763,8 @@ Remove a feature
   </tr>
 </table>
 
-#### Flags:
+<u>Flags:</u>
+
 <table>
   <tr>
     <td style="white-space: nowrap">
@@ -766,7 +799,8 @@ $ mbox feature start NAME
 ```
 Create a new feature, or continue a exist feature
 
-#### Arguments:
+<u>Arguments:</u>
+
 <table>
   <tr>
     <td style="white-space: nowrap">
@@ -778,7 +812,8 @@ Create a new feature, or continue a exist feature
   </tr>
 </table>
 
-#### Options:
+<u>Options:</u>
+
 <table>
   <tr>
     <td style="white-space: nowrap">
@@ -806,7 +841,8 @@ Create a new feature, or continue a exist feature
   </tr>
 </table>
 
-#### Flags:
+<u>Flags:</u>
+
 <table>
   <tr>
     <td style="white-space: nowrap">
@@ -857,7 +893,8 @@ $ mbox fork [PATHS [...]]
 ```
 Quckly open git repository in the Fork app.
 
-#### Arguments:
+<u>Arguments:</u>
+
 <table>
   <tr>
     <td style="white-space: nowrap">
@@ -883,7 +920,8 @@ $ mbox git COMMAND
 ```
 Execute git command for every repo
 
-#### Arguments:
+<u>Arguments:</u>
+
 <table>
   <tr>
     <td style="white-space: nowrap">
@@ -895,14 +933,15 @@ Execute git command for every repo
   </tr>
 </table>
 
-#### Options:
+<u>Options:</u>
+
 <table>
   <tr>
     <td style="white-space: nowrap">
       --no-repo
     </td>
     <td>
-      Exclude a repo, use this option multiple times to exclude multiple repos. Avaliable: mbox-core/mbox-git/mbox-workspace/mbox-dependency-manager/mbox-ruby/mbox-container/mbox-cocoapods/mbox-dev/mbox-dev-native/mbox-dev-ruby
+      Exclude a repo, use this option multiple times to exclude multiple repos. Avaliable: mbox-core/mbox-git/mbox-workspace/mbox-dependency-manager/mbox-ruby/mbox-container/mbox-cocoapods/mbox-dev/mbox-dev-native/mbox-dev-ruby/mbox/mbox.wiki
     </td>
   </tr>
   <tr>
@@ -910,7 +949,7 @@ Execute git command for every repo
       --repo
     </td>
     <td>
-      Specify a repo, use this option multiple times to specify multiple repos. Avaliable: mbox-core/mbox-git/mbox-workspace/mbox-dependency-manager/mbox-ruby/mbox-container/mbox-cocoapods/mbox-dev/mbox-dev-native/mbox-dev-ruby
+      Specify a repo, use this option multiple times to specify multiple repos. Avaliable: mbox-core/mbox-git/mbox-workspace/mbox-dependency-manager/mbox-ruby/mbox-container/mbox-cocoapods/mbox-dev/mbox-dev-native/mbox-dev-ruby/mbox/mbox.wiki
     </td>
   </tr>
 </table>
@@ -922,7 +961,8 @@ $ mbox git config COMMAND
 ```
 Execute git command for every repo
 
-#### Arguments:
+<u>Arguments:</u>
+
 <table>
   <tr>
     <td style="white-space: nowrap">
@@ -934,7 +974,8 @@ Execute git command for every repo
   </tr>
 </table>
 
-#### Flags:
+<u>Flags:</u>
+
 <table>
   <tr>
     <td style="white-space: nowrap">
@@ -953,7 +994,8 @@ $ mbox git hooks
 ```
 Show/Set the git hooks for workspace
 
-#### Flags:
+<u>Flags:</u>
+
 <table>
   <tr>
     <td style="white-space: nowrap">
@@ -1006,9 +1048,10 @@ Show git status for every repo
 ```
 $ mbox go [NAME]
 ```
-Quckly open workspace.
+Quickly open path or workspace.
 
-#### Arguments:
+<u>Arguments:</u>
+
 <table>
   <tr>
     <td style="white-space: nowrap">
@@ -1027,7 +1070,8 @@ $ mbox init [PLUGIN_GROUP [...]]
 ```
 Init Workspace
 
-#### Arguments:
+<u>Arguments:</u>
+
 <table>
   <tr>
     <td style="white-space: nowrap">
@@ -1039,7 +1083,8 @@ Init Workspace
   </tr>
 </table>
 
-#### Options:
+<u>Options:</u>
+
 <table>
   <tr>
     <td style="white-space: nowrap">
@@ -1066,7 +1111,8 @@ $ mbox kerberos destroy [USEREMAIL]
 ```
 Detroy all tickets
 
-#### Arguments:
+<u>Arguments:</u>
+
 <table>
   <tr>
     <td style="white-space: nowrap">
@@ -1078,7 +1124,8 @@ Detroy all tickets
   </tr>
 </table>
 
-#### Flags:
+<u>Flags:</u>
+
 <table>
   <tr>
     <td style="white-space: nowrap">
@@ -1097,7 +1144,8 @@ $ mbox kerberos init [USEREMAIL]
 ```
 Acquire initial tickets
 
-#### Arguments:
+<u>Arguments:</u>
+
 <table>
   <tr>
     <td style="white-space: nowrap">
@@ -1109,7 +1157,8 @@ Acquire initial tickets
   </tr>
 </table>
 
-#### Flags:
+<u>Flags:</u>
+
 <table>
   <tr>
     <td style="white-space: nowrap">
@@ -1128,7 +1177,8 @@ $ mbox kerberos list [EMAIL]
 ```
 List Kerberos credentials
 
-#### Arguments:
+<u>Arguments:</u>
+
 <table>
   <tr>
     <td style="white-space: nowrap">
@@ -1147,7 +1197,8 @@ $ mbox kerberos renew [USEREMAIL]
 ```
 Acquire renew tickets
 
-#### Arguments:
+<u>Arguments:</u>
+
 <table>
   <tr>
     <td style="white-space: nowrap">
@@ -1166,7 +1217,8 @@ $ mbox login [TIMEOUT]
 ```
 Login MBox
 
-#### Arguments:
+<u>Arguments:</u>
+
 <table>
   <tr>
     <td style="white-space: nowrap">
@@ -1192,7 +1244,8 @@ $ mbox merge [NAME]
 ```
 Merge `other feature`/`target branch` into current feature
 
-#### Arguments:
+<u>Arguments:</u>
+
 <table>
   <tr>
     <td style="white-space: nowrap">
@@ -1204,7 +1257,8 @@ Merge `other feature`/`target branch` into current feature
   </tr>
 </table>
 
-#### Options:
+<u>Options:</u>
+
 <table>
   <tr>
     <td style="white-space: nowrap">
@@ -1224,7 +1278,8 @@ Merge `other feature`/`target branch` into current feature
   </tr>
 </table>
 
-#### Flags:
+<u>Flags:</u>
+
 <table>
   <tr>
     <td style="white-space: nowrap">
@@ -1243,7 +1298,8 @@ $ mbox new NAME [BRANCH]
 ```
 Create a project in workspace
 
-#### Arguments:
+<u>Arguments:</u>
+
 <table>
   <tr>
     <td style="white-space: nowrap">
@@ -1270,7 +1326,8 @@ $ mbox open [PATHS [...]]
 ```
 Open specific path in MBox Environment
 
-#### Arguments:
+<u>Arguments:</u>
+
 <table>
   <tr>
     <td style="white-space: nowrap">
@@ -1282,7 +1339,8 @@ Open specific path in MBox Environment
   </tr>
 </table>
 
-#### Flags:
+<u>Flags:</u>
+
 <table>
   <tr>
     <td style="white-space: nowrap">
@@ -1301,7 +1359,8 @@ $ mbox plugin build [NAME [...]]
 ```
 Build the development plugin(s)
 
-#### Arguments:
+<u>Arguments:</u>
+
 <table>
   <tr>
     <td style="white-space: nowrap">
@@ -1313,7 +1372,8 @@ Build the development plugin(s)
   </tr>
 </table>
 
-#### Options:
+<u>Options:</u>
+
 <table>
   <tr>
     <td style="white-space: nowrap">
@@ -1328,12 +1388,13 @@ Build the development plugin(s)
       --stage
     </td>
     <td>
-      The build stage Avaliable: Launcher/Resource/Ruby/Electron/Native
+      The build stage Avaliable: Launcher/Resource/Electron/Native/Ruby
     </td>
   </tr>
 </table>
 
-#### Flags:
+<u>Flags:</u>
+
 <table>
   <tr>
     <td style="white-space: nowrap">
@@ -1368,14 +1429,15 @@ $ mbox plugin dev TEMPLATE [NAME]
 ```
 Use a template to develop a MBox Plugin
 
-#### Arguments:
+<u>Arguments:</u>
+
 <table>
   <tr>
     <td style="white-space: nowrap">
       TEMPLATE
     </td>
     <td>
-      Plugin Template. Avaliable: Launcher/Resource/Ruby/Electron/Native
+      Plugin Template. Avaliable: Launcher/Resource/Electron/Native/Ruby
     </td>
   </tr>
   <tr>
@@ -1395,7 +1457,8 @@ $ mbox plugin disable [NAME [...]]
 ```
 Disable plugins by name.
 
-#### Arguments:
+<u>Arguments:</u>
+
 <table>
   <tr>
     <td style="white-space: nowrap">
@@ -1414,7 +1477,8 @@ $ mbox plugin enable [NAME [...]]
 ```
 Enable plugins by name.
 
-#### Arguments:
+<u>Arguments:</u>
+
 <table>
   <tr>
     <td style="white-space: nowrap">
@@ -1433,7 +1497,8 @@ $ mbox plugin install [NAME [...]]
 ```
 Install Plugin
 
-#### Arguments:
+<u>Arguments:</u>
+
 <table>
   <tr>
     <td style="white-space: nowrap">
@@ -1445,7 +1510,8 @@ Install Plugin
   </tr>
 </table>
 
-#### Flags:
+<u>Flags:</u>
+
 <table>
   <tr>
     <td style="white-space: nowrap">
@@ -1464,7 +1530,8 @@ $ mbox plugin launch [NAME [...]]
 ```
 Run a plugin launcher
 
-#### Arguments:
+<u>Arguments:</u>
+
 <table>
   <tr>
     <td style="white-space: nowrap">
@@ -1476,7 +1543,8 @@ Run a plugin launcher
   </tr>
 </table>
 
-#### Options:
+<u>Options:</u>
+
 <table>
   <tr>
     <td style="white-space: nowrap">
@@ -1510,7 +1578,8 @@ $ mbox plugin next-version [NEW-VERSION]
 ```
 Increments the version numbers
 
-#### Arguments:
+<u>Arguments:</u>
+
 <table>
   <tr>
     <td style="white-space: nowrap">
@@ -1529,7 +1598,8 @@ $ mbox plugin release [NAME [...]]
 ```
 Release a/some development plugin(s)
 
-#### Arguments:
+<u>Arguments:</u>
+
 <table>
   <tr>
     <td style="white-space: nowrap">
@@ -1548,7 +1618,8 @@ $ mbox plugin search NAME
 ```
 Search plugins on the Plugin Market
 
-#### Arguments:
+<u>Arguments:</u>
+
 <table>
   <tr>
     <td style="white-space: nowrap">
@@ -1567,7 +1638,8 @@ $ mbox plugin test [NAME [...]]
 ```
 Test the native plugin(s)
 
-#### Arguments:
+<u>Arguments:</u>
+
 <table>
   <tr>
     <td style="white-space: nowrap">
@@ -1579,7 +1651,8 @@ Test the native plugin(s)
   </tr>
 </table>
 
-#### Options:
+<u>Options:</u>
+
 <table>
   <tr>
     <td style="white-space: nowrap">
@@ -1606,7 +1679,8 @@ $ mbox plugin uninstall [NAME [...]]
 ```
 Uninstall Plugins
 
-#### Arguments:
+<u>Arguments:</u>
+
 <table>
   <tr>
     <td style="white-space: nowrap">
@@ -1618,7 +1692,8 @@ Uninstall Plugins
   </tr>
 </table>
 
-#### Flags:
+<u>Flags:</u>
+
 <table>
   <tr>
     <td style="white-space: nowrap">
@@ -1637,7 +1712,8 @@ $ mbox pod
 ```
 Redirect to Bundler with MBox environment
 
-#### Example:
+<u>Example:</u>
+
 ```bash
 # Install gems with bundler
 $ mbox bundle install
@@ -1651,7 +1727,8 @@ $ mbox product add [NAME] [PLATFORM]
 ```
 Add Product
 
-#### Arguments:
+<u>Arguments:</u>
+
 <table>
   <tr>
     <td style="white-space: nowrap">
@@ -1671,7 +1748,8 @@ Add Product
   </tr>
 </table>
 
-#### Options:
+<u>Options:</u>
+
 <table>
   <tr>
     <td style="white-space: nowrap">
@@ -1690,7 +1768,8 @@ $ mbox product remove [NAME]
 ```
 Remove Product
 
-#### Arguments:
+<u>Arguments:</u>
+
 <table>
   <tr>
     <td style="white-space: nowrap">
@@ -1709,7 +1788,8 @@ $ mbox product sync [NAME]
 ```
 Sync Product
 
-#### Arguments:
+<u>Arguments:</u>
+
 <table>
   <tr>
     <td style="white-space: nowrap">
@@ -1728,7 +1808,8 @@ $ mbox product update [NAME]
 ```
 Update Product, it will redeploy dynamic repository if exists.
 
-#### Arguments:
+<u>Arguments:</u>
+
 <table>
   <tr>
     <td style="white-space: nowrap">
@@ -1747,7 +1828,8 @@ $ mbox remove NAME [...]
 ```
 Remove project from workspace
 
-#### Arguments:
+<u>Arguments:</u>
+
 <table>
   <tr>
     <td style="white-space: nowrap">
@@ -1759,7 +1841,8 @@ Remove project from workspace
   </tr>
 </table>
 
-#### Flags:
+<u>Flags:</u>
+
 <table>
   <tr>
     <td style="white-space: nowrap">
@@ -1794,7 +1877,8 @@ $ mbox repo search NAME
 ```
 Manage Repos
 
-#### Arguments:
+<u>Arguments:</u>
+
 <table>
   <tr>
     <td style="white-space: nowrap">
@@ -1806,7 +1890,8 @@ Manage Repos
   </tr>
 </table>
 
-#### Flags:
+<u>Flags:</u>
+
 <table>
   <tr>
     <td style="white-space: nowrap">
@@ -1825,7 +1910,8 @@ $ mbox setup
 ```
 Setup Command Line Tool
 
-#### Options:
+<u>Options:</u>
+
 <table>
   <tr>
     <td style="white-space: nowrap">
@@ -1837,7 +1923,8 @@ Setup Command Line Tool
   </tr>
 </table>
 
-#### Flags:
+<u>Flags:</u>
+
 <table>
   <tr>
     <td style="white-space: nowrap">
@@ -1856,7 +1943,8 @@ $ mbox status [NAME]
 ```
 Show Status
 
-#### Arguments:
+<u>Arguments:</u>
+
 <table>
   <tr>
     <td style="white-space: nowrap">
@@ -1868,7 +1956,8 @@ Show Status
   </tr>
 </table>
 
-#### Options:
+<u>Options:</u>
+
 <table>
   <tr>
     <td style="white-space: nowrap">
@@ -1880,7 +1969,8 @@ Show Status
   </tr>
 </table>
 
-#### Flags:
+<u>Flags:</u>
+
 <table>
   <tr>
     <td style="white-space: nowrap">
@@ -1899,7 +1989,8 @@ $ mbox stree [PATHS [...]]
 ```
 Quckly open git repository in the SourceTree app.
 
-#### Arguments:
+<u>Arguments:</u>
+
 <table>
   <tr>
     <td style="white-space: nowrap">
@@ -1918,7 +2009,8 @@ $ mbox tower [PATHS [...]]
 ```
 Quckly open git repository in the Tower app.
 
-#### Arguments:
+<u>Arguments:</u>
+
 <table>
   <tr>
     <td style="white-space: nowrap">
@@ -1937,7 +2029,8 @@ $ mbox update
 ```
 Upgrade MBox Application
 
-#### Flags:
+<u>Flags:</u>
+
 <table>
   <tr>
     <td style="white-space: nowrap">
