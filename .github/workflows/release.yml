@@ -9,16 +9,15 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-        - uses: actions/checkout@v2
-          with:
-            fetch-depth: 0
         - name: Setup Git Access
           run: |
             git config --global url."https://${{ secrets.ACCESS_TOKEN }}@github".insteadOf https://github
             git config --global user.email "mbox.runner@mbox.com"
             git config --global user.name "MBox Runner"
-        - name: Sync Repo
-          run: |
-            git remote add target https://${{ secrets.ACCESS_TOKEN }}@github.com/MBoxPlus/mbox.wiki.git
-            git push -f target main:master
-            git push -f --tags target
+        - name: git-sync
+          uses: wei/git-sync@v3
+          with:
+            source_repo: "https://RyanLeeLY:${{ secrets.ACCESS_TOKEN }}@github.com/mboxplus/mbox-wiki.git"
+            source_branch: "main"
+            destination_repo: "https://RyanLeeLY:${{ secrets.ACCESS_TOKEN }}@github.com/mboxplus/mbox.wiki.git"
+            destination_branch: "master"
