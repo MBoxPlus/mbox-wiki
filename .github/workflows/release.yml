@@ -1,0 +1,20 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - "main"
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+        - name: git-sync
+          uses: wei/git-sync@v3
+          with:
+            source_repo: "mboxplus/mbox-wiki"
+            source_branch: "main"
+            destination_repo: "mboxplus/mbox.wiki"
+            destination_branch: "main"
+            source_ssh_private_key: ${{ secrets.GITHUB_TOKEN }}
+            destination_ssh_private_key: ${{ secrets.ACCESS_TOKEN }}
