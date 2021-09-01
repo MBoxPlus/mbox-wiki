@@ -941,7 +941,7 @@ Execute git command for every repo
       --no-repo
     </td>
     <td>
-      Exclude a repo, use this option multiple times to exclude multiple repos. Avaliable: mbox-core/mbox-git/mbox-workspace/mbox-dependency-manager/mbox-ruby/mbox-container/mbox-cocoapods/mbox-dev/mbox-dev-native/mbox-dev-ruby/mbox/mbox.wiki
+      Exclude a repo, use this option multiple times to exclude multiple repos
     </td>
   </tr>
   <tr>
@@ -949,7 +949,7 @@ Execute git command for every repo
       --repo
     </td>
     <td>
-      Specify a repo, use this option multiple times to specify multiple repos. Avaliable: mbox-core/mbox-git/mbox-workspace/mbox-dependency-manager/mbox-ruby/mbox-container/mbox-cocoapods/mbox-dev/mbox-dev-native/mbox-dev-ruby/mbox/mbox.wiki
+      Specify a repo, use this option multiple times to specify multiple repos
     </td>
   </tr>
 </table>

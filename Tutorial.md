@@ -1,3 +1,4 @@
+[简体中文](https://github.com/MBoxPlus/mbox/wiki/Tutorial-cn) | **English**
 ## Create a Workspace
 
 Use command `mbox init [PLUGIN_GROUP]` to create a workspace. For example, `mbox init ios` will make the current directory become a MBox workspace.
@@ -251,9 +252,22 @@ There are 2 features (named 'bugfix' and 'test') and a free-mode in this workspa
 
 We can create a new feature base on free-mode or another feature and copy a list of repos to the new workspace. However, there are some differences between the two cases. 
 
-If the new workspace is based on free-mode, the base commit to checkout is the git HEAD of the free-mode's repos. If based on another feature, the base commit of the new feature to checkout is the target branch reference of the previous feature. Also, all of the git changes will be stashed if create one feature from the other feature.
+If the new workspace is based on free-mode, the base commit to checkout is the git HEAD of the free-mode's repos. If based on another feature, the base commit of the new feature to checkout is the target branch reference of the previous feature. Also, all of the uncommitted changes will be stashed if create one feature from the other feature.
 
 ```shell
+$ mbox status
+[Root]: /Users/mbox/demo
+
+[Feature]: test
+
+    MBoxReposDemo  https://github.com/MBoxPlus/MBoxReposDemo.git  [feature/test]   ->  [main]     ↳0  ↰0
+      + [CocoaPods]  MBoxReposDemo
+    SnapKit        https://github.com/SnapKit/SnapKit.git         [feature/test]   ->  [develop]  ↳0  ↰0
+      + [CocoaPods]  SnapKit
+
+[Containers]:
+ => MBoxReposDemo  Bundler + CocoaPods
+
 $ mbox feature start test
 Create a new feature `test`
 Save current git HEAD
@@ -326,6 +340,6 @@ Show Status
    => MBoxReposDemo2  Bundler + CocoaPods
 ```
 
-This workspace have 2 containers `MBoxReposDemo` and `MBoxReposDemo2` and we switched the current container from `MBoxReposDemo` to `MBoxReposDemo2`. MBox will now reintegrate the `MBoxReposDemo2` project when do `mbox pod install`.
+This feature have 2 containers `MBoxReposDemo` and `MBoxReposDemo2` and we switched the current container from `MBoxReposDemo` to `MBoxReposDemo2`. MBox will now reintegrate the `MBoxReposDemo2` project when do `mbox pod install` next time.
 
-We have to choose one container before run project integration command, such as `mbox pod install` or `mbox bundle install`.
+We have to use command `mbox container use` to choose one container before run project integration command, such as `mbox pod install` or `mbox bundle install`.
