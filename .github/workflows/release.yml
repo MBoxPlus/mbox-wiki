@@ -19,6 +19,6 @@ jobs:
             git config --global user.name "MBox Runner"
         - name: Sync Repo
           run: |
-            git remote add target https://github.com/MBoxPlus/mbox.wiki.git
+            git remote add target https://${{ secrets.ACCESS_TOKEN }}@github.com/MBoxPlus/mbox.wiki.git
             git push -f target main:master
             git push -f --tags target
