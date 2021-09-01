@@ -3,7 +3,7 @@ name: Release
 on:
   push:
     branches:
-      - "main"
+      - "master"
 
 jobs:
   deploy:
@@ -13,8 +13,8 @@ jobs:
           uses: wei/git-sync@v3
           with:
             source_repo: "mboxplus/mbox-wiki"
-            source_branch: "main"
+            source_branch: "master"
             destination_repo: "mboxplus/mbox.wiki"
-            destination_branch: "main"
+            destination_branch: "master"
             source_ssh_private_key: ${{ secrets.GITHUB_TOKEN }}
             destination_ssh_private_key: ${{ secrets.ACCESS_TOKEN }}
