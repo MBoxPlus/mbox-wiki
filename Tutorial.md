@@ -1,4 +1,4 @@
-[简体中文](https://github.com/MBoxPlus/mbox/wiki/Tutorial-cn) | **English**
+[简体中文](Tutorial-cn) | **English**
 ## Create a Workspace
 
 Use command `mbox init [PLUGIN_GROUP]` to create a workspace. For example, `mbox init ios` will make the current directory become a MBox workspace.
@@ -117,9 +117,9 @@ Show Status
    => MBoxReposDemo  Bundler + CocoaPods
 ```
 
-In [free mode](https://github.com/MBoxPlus/mbox/wiki/MBox-terminology#free-mode-%E5%92%8C-feature-mode), there are **2** arguments for the command `mbox add`，the 1st is the git URL and the 2nd is the branch/tag name which is used to checkout.
+In [free mode](MBox-terminology#free-mode-%E5%92%8C-feature-mode), there are **2** arguments for the command `mbox add`，the 1st is the git URL and the 2nd is the branch/tag name which is used to checkout.
 
-In [feature mode](https://github.com/MBoxPlus/mbox/wiki/MBox-terminology#free-mode-%E5%92%8C-feature-mode), there are **3** arguments. The 1st is the git URL. The 2nd is the base branch/tag/commit, which is what the feature branch is checked out from. The 3rd is the target branch which is used for merge request.
+In [feature mode](MBox-terminology#free-mode-%E5%92%8C-feature-mode), there are **3** arguments. The 1st is the git URL. The 2nd is the base branch/tag/commit, which is what the feature branch is checked out from. The 3rd is the target branch which is used for merge request.
 
 ### Remove Repo
 

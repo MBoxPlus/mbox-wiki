@@ -1,6 +1,6 @@
 # iOS 项目接入与使用
 
-**简体中文** | [English](https://github.com/MBoxPlus/mbox/wiki/Getting-Started-iOS)
+**简体中文** | [English](Getting-Started-iOS)
 
 ## 1. 创建 Workspace
 
@@ -97,8 +97,8 @@ mbox add [DEPENDENT_GIT_URL] [TARGET_BRANCH] --checkout-from-commit
 
 ## 资源
 
-[快速开始 Demo](Quick-Start-Demo-iOS.md)
+[快速开始 Demo](Quick-Start-Demo-iOS)
 
-[CLI 文档](https://github.com/MBoxPlus/mbox/wiki/CLI-documentation)
+[CLI 文档](CLI-documentation)
 
 [MBoxCocoaPods 文档](https://github.com/MBoxPlus/mbox-cocoapods)

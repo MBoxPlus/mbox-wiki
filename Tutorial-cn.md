@@ -1,4 +1,4 @@
-**简体中文** | [English](https://github.com/MBoxPlus/mbox/wiki/Tutorial) 
+**简体中文** | [English](Tutorial) 
 ## 创建 Workspace
 
 使用命令 `mbox init [PLUGIN_GROUP]` 来创建一个 workspace。 例如，运行 `mbox init ios` 将会使得当前目录成为一个 workspace。
@@ -117,9 +117,9 @@ Show Status
    => MBoxReposDemo  Bundler + CocoaPods
 ```
 
-在 [free mode](https://github.com/MBoxPlus/mbox/wiki/MBox-terminology#free-mode-%E5%92%8C-feature-mode) 下, 该命令有 **2** 个参数，第1个是 git URL 地址，第2个是即将要切出的 git 分支或标签名。
+在 [free mode](MBox-terminology#free-mode-%E5%92%8C-feature-mode) 下, 该命令有 **2** 个参数，第1个是 git URL 地址，第2个是即将要切出的 git 分支或标签名。
 
-在 [feature mode](https://github.com/MBoxPlus/mbox/wiki/MBox-terminology#free-mode-%E5%92%8C-feature-mode)下, 该命令有 **3** 个参数，。 第1个是 git URL 地址。第2个是当前即将切出的 feature 分支的基线（可以是分支/标签/提交）。第三个参数是目标分支，即最终 MR 期望合入的分支。
+在 [feature mode](MBox-terminology#free-mode-%E5%92%8C-feature-mode)下, 该命令有 **3** 个参数，。 第1个是 git URL 地址。第2个是当前即将切出的 feature 分支的基线（可以是分支/标签/提交）。第三个参数是目标分支，即最终 MR 期望合入的分支。
 
 ### 删除 Repo
 

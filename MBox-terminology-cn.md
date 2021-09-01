@@ -1,4 +1,4 @@
-**简体中文** | [English](https://github.com/MBoxPlus/mbox/wiki/MBox-terminology) 
+**简体中文** | [English](MBox-terminology) 
 
 ## Workspace
 

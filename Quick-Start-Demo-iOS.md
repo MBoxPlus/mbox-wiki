@@ -1,4 +1,4 @@
-[简体中文](https://github.com/MBoxPlus/mbox/wiki/Quick-Start-Demo-iOS-cn) | **English**
+[简体中文](Quick-Start-Demo-iOS-cn) | **English**
 
 The following instructions will help you quickly get to know how to use MBox.
 
@@ -20,6 +20,6 @@ Please refer to [Getting Started for iOS](Getting-Started-iOS) to learn how to u
 
 ## Resources
 
-[CLI Documentation](https://github.com/MBoxPlus/mbox/wiki/CLI-documentation)
+[CLI Documentation](CLI-documentation)
 
 [MBoxCocoaPods Documentation](https://github.com/MBoxPlus/mbox-cocoapods)

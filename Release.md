@@ -12,7 +12,7 @@
 
 - You can install a prerelease package after the pipeline jobs done.
 
-![img_2.png](img_2.png)
+![img_2.png](images/img_2.png)
 
 - Click `Merge Pull Request` to trigger publishing.
 
@@ -24,4 +24,4 @@
 
 - Click the button `Run workflow`.
 
-![img.png](img.png)
+![img.png](images/img.png)

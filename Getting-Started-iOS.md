@@ -1,6 +1,6 @@
 # Getting Started for iOS
 
-[简体中文](https://github.com/MBoxPlus/mbox/wiki/Getting-Started-iOS-cn) | **English**
+[简体中文](Getting-Started-iOS-cn) | **English**
 
 ## 1. Create Workspace
 
@@ -98,6 +98,6 @@ Run `mbox pod install` again. You will find this repo is under the `Development 
 
 [Quick Start Demo](Quick-Start-Demo-iOS)
 
-[CLI Documentation](https://github.com/MBoxPlus/mbox/wiki/CLI-documentation)
+[CLI Documentation](CLI-documentation)
 
 [MBoxCocoaPods Documentation](https://github.com/MBoxPlus/mbox-cocoapods)

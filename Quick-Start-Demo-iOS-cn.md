@@ -1,6 +1,6 @@
 # 快速开始 Demo
 
-**简体中文** | [English](https://github.com/MBoxPlus/mbox/wiki/Quick-Start-Demo)
+**简体中文** | [English](Quick-Start-Demo-iOS)
 
 通过下面的步骤，将帮助你快速了解如何使用 MBox
 
@@ -22,6 +22,6 @@ mbox go # Open Xcode
 
 ## 资源
 
-[CLI 文档](https://github.com/MBoxPlus/mbox/wiki/CLI-documentation)
+[CLI 文档](CLI-documentation)
 
 [MBoxCocoaPods 文档](https://github.com/MBoxPlus/mbox-cocoapods)
