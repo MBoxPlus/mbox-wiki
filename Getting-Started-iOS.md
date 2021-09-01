@@ -96,7 +96,7 @@ Run `mbox pod install` again. You will find this repo is under the `Development 
 
 ## Resources
 
-[Quick Start Demo](Quick-Start-Demo-iOS.md)
+[Quick Start Demo](Quick-Start-Demo-iOS)
 
 [CLI Documentation](https://github.com/MBoxPlus/mbox/wiki/CLI-documentation)
 

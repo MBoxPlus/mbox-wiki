@@ -16,7 +16,7 @@ mbox pod install
 mbox go # Open Xcode
 ```
 
-Please refer to [Getting Started for iOS](Getting-Started-iOS.md) to learn how to use MBox in your own project.
+Please refer to [Getting Started for iOS](Getting-Started-iOS) to learn how to use MBox in your own project.
 
 ## Resources
 
