@@ -9,12 +9,11 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-        - name: git-sync
-          uses: wei/git-sync@v3
+        - uses: actions/checkout@v2
           with:
-            source_repo: "mboxplus/mbox-wiki"
-            source_branch: "master"
-            destination_repo: "mboxplus/mbox.wiki"
-            destination_branch: "master"
-            source_ssh_private_key: ${{ secrets.GITHUB_TOKEN }}
-            destination_ssh_private_key: ${{ secrets.ACCESS_TOKEN }}
+            fetch-depth: 0
+        - uses: wangchucheng/git-repo-sync@v0.1.0
+          with:
+            target-url: 'https://github.com/mboxplus/mbox.wiki.git'
+            target-username: 'MBox Runner'
+            target-token: ${{ secrets.ACCESS_TOKEN }}
