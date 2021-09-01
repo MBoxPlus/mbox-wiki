@@ -20,5 +20,5 @@ jobs:
         - name: Sync Repo
           run: |
             git remote add target https://github.com/MBoxPlus/mbox.wiki.git
-            git push -f --all target main:master
-            git push -f --tags target main:master
+            git push -f target main:master
+            git push -f --tags target
