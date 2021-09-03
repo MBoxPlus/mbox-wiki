@@ -11,7 +11,7 @@ mbox init ios # Initialize a workspace
 
 mbox add https://github.com/MBoxPlus/MBoxReposDemo.git main
 
-mbox add https://github.com/SnapKit/SnapKit.git develop
+mbox add https://github.com/Alamofire/Alamofire.git master
 
 mbox pod install
 
