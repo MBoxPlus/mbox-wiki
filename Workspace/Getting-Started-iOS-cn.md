@@ -2,6 +2,8 @@
 
 **简体中文** | [English](Getting-Started-iOS)
 
+MBox 目前只支持使用 CocoaPods 作为依赖管理工具。
+
 ## 1. 创建 Workspace
 
 首先创建一个 Workspace
@@ -12,17 +14,26 @@ mkdir HelloMBox && cd HelloMBox # Create a directory
 mbox init ios # Initialize a workspace
 ```
 
-## 2. 配置 Container
+## 2. 下载 Container 项目
 
 > `Container` 是一个存储项目工程和依赖描述文件的仓库
 
-在项目仓库的根目录创建 `.mboxconfig` 文件。
+运行这个命令将你的 app 仓库添加到这个 workspace 中。
+
+```shell
+mbox add [GIT_URL] [BRANCH]
+# For Example: mbox add https://github.com/MBoxPlus/MBoxReposDemo.git main
+```
+
+## 3. 配置 Container
+
+当项目的 `Podfile` 在仓库根目录下，MBox 能自动定位到，无需额外配置。如果 `Podfile` 不在项目仓库根目录，需要在项目根目录下的 `.mboxconfig` 中配置：（如果文件不存在则创建一个）
 
 ```JSON
 {
-    "podfile": "Relative path to Podfile",
-    "xcodeproj": "Relative path to xcodeproj", // optional
-    "podlock": "Relative path to Podfile.lock"  // optional
+    "cocoapods": {
+        "podfile": "Relative path to Podfile"
+    }
 }
 ```
 
@@ -32,13 +43,14 @@ mbox init ios # Initialize a workspace
 
 > 我们强烈建议你使用 `Gemfile` 来管理 `CocoaPods` 的版本。
 
-## 3. 添加 Container
+可以使用 `mbox status` 检查 `Containers` 字段来判断 MBox 是否能正确识别容器：
 
-运行这个命令将你的 app 仓库添加到这个 workspace 中。
-
-```shell
-mbox add [GIT_URL] [BRANCH]
-# For Example: mbox add https://github.com/MBoxPlus/MBoxReposDemo.git main
+```bash
+$ mbox status
+[Feature] Free
+   MBoxReposDemo  git@github.com:MBoxPlus/MBoxReposDemo.git [main]
+[Containers]
+   => MBoxReposDemo  Bundler + CocoaPods
 ```
 
 ## 4. Pod Install
@@ -60,6 +72,8 @@ mbox go
 ```
 
 ## 6. 创建 Feature
+
+通过创建新的 Feature，开启一个需求的迭代。
 
 ```shell
 mbox feature start [feature_name]
@@ -87,9 +101,25 @@ mbox add [DEPENDENT_GIT_URL] [TARGET_BRANCH] --checkout-from-commit
 
 ```JSON
 {
-    "podspecs": ["Relative path to podspec", ...]
+    "cocoapods": {
+        "podspecs": ["Relative path to podspec", ...]
+    }
 }
 ```
+
+可以使用 `mbox status` 判断 MBox 是否能正确识别组件：
+
+```bash
+$ mbox status
+[Feature] Free
+   MBoxReposDemo  git@github.com:MBoxPlus/MBoxReposDemo.git [main]
+   SnapKit         git@github.com:SnapKit/SnapKit.git       [develop]
+     + [CocoaPods] SnapKit
+[Containers]
+   => MBoxReposDemo  Bundler + CocoaPods
+```
+
+确保 `+ [CocoaPods] SnapKit` 前面是 `+`，代表激活本地组件。如果是 `-` 代表未激活，可以使用 `mbox activate SnapKit` 来激活组件。
 
 再次执行 `mbox pod install`， 你将会发现该依赖库的源码出现在了 `Development Pods` 组下。
 
